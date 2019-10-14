@@ -2,7 +2,7 @@
  * @Author: Longze Su
  * @Date: 2019-10-13 22:44:02
  * @Description: CS211_Project1
- * @LastEditTime: 2019-10-14 01:09:09
+ * @LastEditTime: 2019-10-14 01:30:43
  * @LastEditors: Longze Su
  */
 
@@ -10,7 +10,7 @@
 #include "functions.hpp" 
 
 // strassen
-void dgemm4(double* a, double* b, double* c, int n)
+void Dgemm::dgemm4(double* a, double* b, double* c, int n)
 {
     double t0, t1; 
     Time t; 
@@ -63,7 +63,7 @@ void dgemm4(double* a, double* b, double* c, int n)
 }
 
 // block strassen
-void dgemm5(double* a, double* b, double* c, int n)
+void Dgemm::dgemm5(double* a, double* b, double* c, int n)
 {
     
 }

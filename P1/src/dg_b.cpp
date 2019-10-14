@@ -2,7 +2,7 @@
  * @Author: Longze Su
  * @Date: 2019-10-13 22:44:02
  * @Description: CS211_Project1
- * @LastEditTime: 2019-10-14 01:57:44
+ * @LastEditTime: 2019-10-14 02:15:52
  * @LastEditors: Longze Su
  */
 
@@ -133,5 +133,5 @@ double t0, t1;
 
     t1 = t.get_time(); 
     IO io; 
-    io.output_b("_3x3_blockn", B, n, t1-t0); 
+    io.output_b("ss_2x2_blockn", B, n, t1-t0); 
 }

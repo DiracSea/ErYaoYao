@@ -1,10 +1,10 @@
 CPP := g++
-CC := gcc-4.7.2
+CC := gcc
 VPATH := src 
 INIT := Init.o
 VL := Validate.o
 MN := main_2_p4.o
-TARGETS := 1_p1p2 1_p3 2_p3 2_p3_1 2_p4 2_p4_0_C
+TARGETS := 1_p1p2 1_p3 2_p3 2_p3_1 2_p4 2_p4_C
 
 all: $(TARGETS)
 

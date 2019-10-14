@@ -1,0 +1,19 @@
+ubuntu@ip-172-31-21-15:~/cs211/Project/ErYaoYao/P1$ ./pb1
+ijk_block_2x2: dgemm2 - When n = 64: elapsed time is 0.000586987seconds.
+ijk_block_2x2: dgemm2 - When n = 64: elapsed time is 0.000628948seconds.
+dgemm1's max difference is 0, result is right~
+ijk_block_2x2: dgemm2 - When n = 128: elapsed time is 0.00419307seconds.
+ijk_block_2x2: dgemm2 - When n = 128: elapsed time is 0.00524998seconds.
+dgemm1's max difference is 0, result is right~
+ijk_block_2x2: dgemm2 - When n = 256: elapsed time is 0.0440731seconds.
+ijk_block_2x2: dgemm2 - When n = 256: elapsed time is 0.0564129seconds.
+dgemm1's max difference is 0, result is right~
+ijk_block_2x2: dgemm2 - When n = 512: elapsed time is 0.360863seconds.
+ijk_block_2x2: dgemm2 - When n = 512: elapsed time is 0.460355seconds.
+dgemm1's max difference is 0, result is right~
+ijk_block_2x2: dgemm2 - When n = 1024: elapsed time is 4.31796seconds.
+ijk_block_2x2: dgemm2 - When n = 1024: elapsed time is 4.90356seconds.
+dgemm1's max difference is 0, result is right~
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 60.4289seconds.
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 66.7572seconds.
+dgemm1's max difference is 0, result is right~

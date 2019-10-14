@@ -2,7 +2,7 @@
  * @Author: Longze Su
  * @Date: 2019-10-12 17:07:23
  * @Description: CS211_Project1
- * @LastEditTime: 2019-10-13 20:37:10
+ * @LastEditTime: 2019-10-14 01:55:22
  * @LastEditors: Longze Su
  */
 // DGEMM_HPP
@@ -74,6 +74,6 @@ public:
     void dgemm_ijk_blockn(double* a, double* b, double* c, int n, int B); 
     
     void dgemm4(double* a, double* b, double* c, int n);
-    void dgemm5(double* a, double* b, double* c, int n);
+    void dgemm5(double* a, double* b, double* c, int n, int B);
 }; 
 

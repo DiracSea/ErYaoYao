@@ -1,12 +1,10 @@
 /*
  * @Author: Longze Su
- * @Date: 2019-10-14 01:09:29
+ * @Date: 2019-10-14 02:00:03
  * @Description: CS211_Project1
- * @LastEditTime: 2019-10-14 01:59:40
+ * @LastEditTime: 2019-10-14 02:06:57
  * @LastEditors: Longze Su
  */
-
-
 #include "src/functions.hpp"
 #include <iostream> 
 #include <algorithm> 
@@ -16,11 +14,13 @@ int main()
 {
     double c1, c2;
     int i; 
+    int n = 2048; 
+    int size = n*n; 
     srand(time(NULL)); 
+    
     for (i = 0; i < 6; i++) 
     {
         // init
-        int size = num2[i]*num2[i]; 
         double* a = new double[size]; 
         double* b = new double[size]; 
         double* c = new double[size];
@@ -37,8 +37,8 @@ int main()
 
         // matrix multiplication
         Dgemm dg; 
-        dg.dgemm2(a, b, c1, num2[i]);
-        dg.dgemm4(a, b, c2, num2[i]); 
+        dg.dgemm_ijk_blockn(a, b, c1, n, block[i]);
+        dg.dgemm5(a, b, c2, n, block[i]); 
 
         Validate valid; 
         double max_diff1 = valid.validate(c1, c2, size); 

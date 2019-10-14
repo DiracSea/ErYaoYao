@@ -4,11 +4,14 @@ VPATH := src
 INIT := Init.o
 VL := Validate.o
 MN := main_2_p4.o
-TARGETS := pb1 1_p1p2 1_p3 2_p3 2_p3_1 2_p4
+TARGETS := pb1 pb2 1_p1p2 1_p3 2_p3 2_p3_1 2_p4
 
 all: $(TARGETS)
 
 pb1: main_b.o dg_b.o dg_p1.o IO.o $(VL) $(INIT)
+		$(CPP) -o $@ $^
+		
+pb2: main_b1.o dg_b.o dg_p1.o dg_p4.o IO.o $(VL) $(INIT)
 		$(CPP) -o $@ $^
 
 1_p1p2: main_1_p1p2.o dg_p1.o IO.o $(VL) $(INIT) 

@@ -1,0 +1,1 @@
+./2_p4_2: /act/gcc-4.7.2/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./2_p4_2)

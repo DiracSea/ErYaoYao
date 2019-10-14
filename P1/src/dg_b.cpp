@@ -2,7 +2,7 @@
  * @Author: Longze Su
  * @Date: 2019-10-13 22:44:02
  * @Description: CS211_Project1
- * @LastEditTime: 2019-10-14 02:15:52
+ * @LastEditTime: 2019-10-14 02:23:17
  * @LastEditors: Longze Su
  */
 
@@ -65,11 +65,11 @@ void Dgemm::dgemm4(double* a, double* b, double* c, int n)
 // block strassen
 void Dgemm::dgemm5(double* a, double* b, double* c, int n, int B)
 {
-double t0, t1; 
+    double t0, t1; 
     Time t; 
     t0 = t.get_time(); 
 
-    int i, j, k, i1, j1, k1, l; 
+    int i, j, k, i1, j1, k1; 
 
     for (i = 0; i < n; i+=B)
 	    for (j = 0; j < n; j+=B)
@@ -98,16 +98,16 @@ double t0, t1;
 
                         for (k1 = k; k1 < n_k2; k1 += 2)
                         {
-                            register double a00 = a[i*n + k]; 
-                            register double a01 = a[i*n + k+1]; 
-                            register double a10 = a[(i+1)*n + k]; 
-                            register double a11 = a[(i+1)*n + k+1]; 
+                            register double a00 = a[i1*n + k1]; 
+                            register double a01 = a[i1*n + k1+1]; 
+                            register double a10 = a[(i1+1)*n + k1]; 
+                            register double a11 = a[(i1+1)*n + k1+1]; 
 
                             // define 4 registers for b
-                            register double b00 = b[k*n + j]; 
-                            register double b01 = b[k*n + j+1]; 
-                            register double b10 = b[(k+1)*n + j]; 
-                            register double b11 = b[(k+1)*n + j+1];
+                            register double b00 = b[k1*n + j1]; 
+                            register double b01 = b[k1*n + j1+1]; 
+                            register double b10 = b[(k1+1)*n + j1]; 
+                            register double b11 = b[(k1+1)*n + j1+1];
                             register double m1 = (a00 + a11) * (b00 + b11); 
                             register double m2 = (a10 + a11) * b00;
                             register double m3 = a00 * (b01 - b11);
@@ -122,10 +122,10 @@ double t0, t1;
                             c11 += m1+m3-m2+m6; 
                         }
                         // save register to mem
-                        c[i*n + j]       = c00; 
-                        c[i*n + j+1]     = c01; 
-                        c[(i+1)*n + j]   = c10; 
-                        c[(i+1)*n + j+1] = c11; 
+                        c[n0] = c00; 
+                        c[n0 + 1] = c01; 
+                        c[n1] = c10; 
+                        c[n1 + 1] = c11; 
                     }
                 }
             }

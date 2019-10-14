@@ -2,7 +2,7 @@
  * @Author: Longze Su
  * @Date: 2019-10-14 02:00:03
  * @Description: CS211_Project1
- * @LastEditTime: 2019-10-14 02:14:40
+ * @LastEditTime: 2019-10-14 02:17:30
  * @LastEditors: Longze Su
  */
 #include "src/functions.hpp"
@@ -45,11 +45,11 @@ int main()
 
         Validate valid; 
         double max_diff1 = valid.validate(c1, c2, size); 
-        double max_diff1 = valid.validate(c1, c3, size); 
+        double max_diff2 = valid.validate(c1, c3, size); 
 
         IO io; 
         io.output_diff(1, max_diff1); 
-        io.output_diff(2, max_diff1); 
+        io.output_diff(2, max_diff2); 
 
         // free matrix space
         init.term_matrix(a, b, c); 

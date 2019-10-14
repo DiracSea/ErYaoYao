@@ -1,0 +1,30 @@
+ijk: dgemm0 - When n = 64: elapsed time is 0.00143909seconds.
+ijk: dgemm1 - When n = 64: elapsed time is 0.000921011seconds.
+ijk_block_4x4: dgemm2 - When n = 64: elapsed time is 0.000512123seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~
+ijk: dgemm0 - When n = 128: elapsed time is 0.012816seconds.
+ijk: dgemm1 - When n = 128: elapsed time is 0.00839305seconds.
+ijk_block_4x4: dgemm2 - When n = 128: elapsed time is 0.00428414seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~
+ijk: dgemm0 - When n = 256: elapsed time is 0.155791seconds.
+ijk: dgemm1 - When n = 256: elapsed time is 0.0994301seconds.
+ijk_block_4x4: dgemm2 - When n = 256: elapsed time is 0.0453892seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~
+ijk: dgemm0 - When n = 512: elapsed time is 1.27939seconds.
+ijk: dgemm1 - When n = 512: elapsed time is 0.778338seconds.
+ijk_block_4x4: dgemm2 - When n = 512: elapsed time is 0.357464seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~
+ijk: dgemm0 - When n = 1024: elapsed time is 14.9523seconds.
+ijk: dgemm1 - When n = 1024: elapsed time is 14.1973seconds.
+ijk_block_4x4: dgemm2 - When n = 1024: elapsed time is 4.17248seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~
+ijk: dgemm0 - When n = 2048: elapsed time is 169.495seconds.
+ijk: dgemm1 - When n = 2048: elapsed time is 142.607seconds.
+ijk_block_4x4: dgemm2 - When n = 2048: elapsed time is 52.6261seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~

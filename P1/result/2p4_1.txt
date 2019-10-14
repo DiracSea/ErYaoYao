@@ -1,0 +1,31 @@
+ubuntu@ip-172-31-21-15:~/cs211/Project/P1$ ./2_p4_1
+block: 6
+ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 18.2441seconds.
+ijk: block_size is 6 - When n = 2046: elapsed time is 16.1928seconds.
+_3x3_blockn: block_size is 6 - When n = 2046: elapsed time is 11.7283seconds.
+dgemm123's max difference is 0, result is right~
+dgemm303's max difference is 0, result is right~
+block: 33
+ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 18.3423seconds.
+ijk: block_size is 33 - When n = 2046: elapsed time is 10.2856seconds.
+_3x3_blockn: block_size is 33 - When n = 2046: elapsed time is 6.0819seconds.
+dgemm123's max difference is 0, result is right~
+dgemm303's max difference is 0, result is right~
+block: 66
+ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 18.1033seconds.
+ijk: block_size is 66 - When n = 2046: elapsed time is 10.9561seconds.
+_3x3_blockn: block_size is 66 - When n = 2046: elapsed time is 6.07565seconds.
+dgemm123's max difference is 0, result is right~
+dgemm303's max difference is 0, result is right~
+block: 186
+ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 18.225seconds.
+ijk: block_size is 186 - When n = 2046: elapsed time is 11.1114seconds.
+_3x3_blockn: block_size is 186 - When n = 2046: elapsed time is 6.22154seconds.
+dgemm123's max difference is 0, result is right~
+dgemm303's max difference is 0, result is right~
+block: 1023
+ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 17.9945seconds.
+ijk: block_size is 1023 - When n = 2046: elapsed time is 14.8007seconds.
+_3x3_blockn: block_size is 1023 - When n = 2046: elapsed time is 7.03609seconds.
+dgemm123's max difference is 0, result is right~
+dgemm303's max difference is 0, result is right~

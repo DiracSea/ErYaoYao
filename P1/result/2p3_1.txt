@@ -1,0 +1,109 @@
+ubuntu@ip-172-31-21-15:~/cs211/Project/P1$ ./2_p3_1
+ijk, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 49.0326seconds.
+ijk: block_size is 32 - When n = 2048: elapsed time is 48.4356seconds.
+ijk: block_size is 64 - When n = 2048: elapsed time is 53.8573seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+ijk, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.8008seconds.
+ijk: block_size is 128 - When n = 2048: elapsed time is 52.9101seconds.
+ijk: block_size is 256 - When n = 2048: elapsed time is 54.2829seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+ijk, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.0936seconds.
+ijk: block_size is 512 - When n = 2048: elapsed time is 110.036seconds.
+ijk: block_size is 1024 - When n = 2048: elapsed time is 122.055seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+jik, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 49.0594seconds.
+jik: block_size is 32 - When n = 2048: elapsed time is 50.1443seconds.
+jik: block_size is 64 - When n = 2048: elapsed time is 53.9469seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+jik, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.2976seconds.
+jik: block_size is 128 - When n = 2048: elapsed time is 54.4221seconds.
+jik: block_size is 256 - When n = 2048: elapsed time is 57.2238seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+jik, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.7029seconds.
+jik: block_size is 512 - When n = 2048: elapsed time is 110.942seconds.
+jik: block_size is 1024 - When n = 2048: elapsed time is 121.007seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+ikj, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 49.1029seconds.
+ikj: block_size is 32 - When n = 2048: elapsed time is 39.6815seconds.
+ikj: block_size is 64 - When n = 2048: elapsed time is 40.1418seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+ikj, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.7299seconds.
+ikj: block_size is 128 - When n = 2048: elapsed time is 37.6631seconds.
+ikj: block_size is 256 - When n = 2048: elapsed time is 36.4722seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+ikj, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.5407seconds.
+ikj: block_size is 512 - When n = 2048: elapsed time is 36.2487seconds.
+ikj: block_size is 1024 - When n = 2048: elapsed time is 36.0195seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+kij, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.4635seconds.
+kij: block_size is 32 - When n = 2048: elapsed time is 41.2212seconds.
+kij: block_size is 64 - When n = 2048: elapsed time is 39.8077seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+kij, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.4912seconds.
+kij: block_size is 128 - When n = 2048: elapsed time is 37.7331seconds.
+kij: block_size is 256 - When n = 2048: elapsed time is 36.8339seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+kij, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.5623seconds.
+kij: block_size is 512 - When n = 2048: elapsed time is 36.4562seconds.
+kij: block_size is 1024 - When n = 2048: elapsed time is 36.2941seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+jki, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.957seconds.
+jki: block_size is 32 - When n = 2048: elapsed time is 93.8454seconds.
+jki: block_size is 64 - When n = 2048: elapsed time is 91.1109seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+jki, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.7653seconds.
+jki: block_size is 128 - When n = 2048: elapsed time is 90.1681seconds.
+jki: block_size is 256 - When n = 2048: elapsed time is 127.931seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+jki, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.9325seconds.
+jki: block_size is 512 - When n = 2048: elapsed time is 242.381seconds.
+jki: block_size is 1024 - When n = 2048: elapsed time is 253.065seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+kji, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 48.8056seconds.
+kji: block_size is 32 - When n = 2048: elapsed time is 92.9513seconds.
+kji: block_size is 64 - When n = 2048: elapsed time is 91.2712seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+kji, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 49.6979seconds.
+kji: block_size is 128 - When n = 2048: elapsed time is 90.112seconds.
+kji: block_size is 256 - When n = 2048: elapsed time is 126.537seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+kji, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 49.0098seconds.
+kji: block_size is 512 - When n = 2048: elapsed time is 241.93seconds.
+kji: block_size is 1024 - When n = 2048: elapsed time is 253.207seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~

@@ -1,0 +1,43 @@
+ubuntu@ip-172-31-21-15:~/cs211/Project/P1$ ./1_p3
+ijk: dgemm0 - When n = 66: elapsed time is 0.00153399seconds.
+ijk: dgemm1 - When n = 66: elapsed time is 0.00103092seconds.
+ijk_block_2x2: dgemm2 - When n = 66: elapsed time is 0.000545025seconds.
+ijk_block_3x3: dgemm3 - When n = 66: elapsed time is 0.000460863seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~
+dgemm3's max difference is 0, result is right~
+ijk: dgemm0 - When n = 132: elapsed time is 0.011868seconds.
+ijk: dgemm1 - When n = 132: elapsed time is 0.00776291seconds.
+ijk_block_2x2: dgemm2 - When n = 132: elapsed time is 0.00428009seconds.
+ijk_block_3x3: dgemm3 - When n = 132: elapsed time is 0.00364208seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~
+dgemm3's max difference is 0, result is right~
+ijk: dgemm0 - When n = 258: elapsed time is 0.105937seconds.
+ijk: dgemm1 - When n = 258: elapsed time is 0.0712171seconds.
+ijk_block_2x2: dgemm2 - When n = 258: elapsed time is 0.0380449seconds.
+ijk_block_3x3: dgemm3 - When n = 258: elapsed time is 0.0303261seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~
+dgemm3's max difference is 0, result is right~
+ijk: dgemm0 - When n = 516: elapsed time is 0.889591seconds.
+ijk: dgemm1 - When n = 516: elapsed time is 0.562275seconds.
+ijk_block_2x2: dgemm2 - When n = 516: elapsed time is 0.312661seconds.
+ijk_block_3x3: dgemm3 - When n = 516: elapsed time is 0.254879seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~
+dgemm3's max difference is 0, result is right~
+ijk: dgemm0 - When n = 1026: elapsed time is 9.1029seconds.
+ijk: dgemm1 - When n = 1026: elapsed time is 5.58048seconds.
+ijk_block_2x2: dgemm2 - When n = 1026: elapsed time is 2.80581seconds.
+ijk_block_3x3: dgemm3 - When n = 1026: elapsed time is 2.22105seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~
+dgemm3's max difference is 0, result is right~
+ijk: dgemm0 - When n = 2052: elapsed time is 161.222seconds.
+ijk: dgemm1 - When n = 2052: elapsed time is 141.33seconds.
+ijk_block_2x2: dgemm2 - When n = 2052: elapsed time is 39.7297seconds.
+ijk_block_3x3: dgemm3 - When n = 2052: elapsed time is 28.3169seconds.
+dgemm1's max difference is 0, result is right~
+dgemm2's max difference is 0, result is right~
+dgemm3's max difference is 0, result is right~

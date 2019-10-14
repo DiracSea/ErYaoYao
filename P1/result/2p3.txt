@@ -1,0 +1,37 @@
+ubuntu@ip-172-31-21-15:~/cs211/Project/P1$ ./2_p3
+ijk
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 39.5952seconds.
+ijk - When n = 2050: elapsed time is 144.103seconds.
+ijk: block_size is 10 - When n = 2050: elapsed time is 38.8291seconds.
+dgemm123's max difference is 0, result is right~
+dgemm12310's max difference is 0, result is right~
+jik
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 39.5718seconds.
+jik: dgemm0 - When n = 2050: elapsed time is 127.907seconds.
+jik: block_size is 10 - When n = 2050: elapsed time is 35.4362seconds.
+dgemm123's max difference is 0, result is right~
+dgemm12310's max difference is 0, result is right~
+ikj
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 39.6605seconds.
+ikj: dgemm0 - When n = 2050: elapsed time is 35.807seconds.
+ikj: block_size is 10 - When n = 2050: elapsed time is 41.0999seconds.
+dgemm123's max difference is 0, result is right~
+dgemm12310's max difference is 0, result is right~
+kij
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 39.9472seconds.
+kij: dgemm0 - When n = 2050: elapsed time is 36.2143seconds.
+kij: block_size is 10 - When n = 2050: elapsed time is 40.7472seconds.
+dgemm123's max difference is 0, result is right~
+dgemm12310's max difference is 0, result is right~
+jki
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 39.7815seconds.
+jki: dgemm0 - When n = 2050: elapsed time is 358.062seconds.
+jki: block_size is 10 - When n = 2050: elapsed time is 51.9823seconds.
+dgemm123's max difference is 0, result is right~
+dgemm12310's max difference is 0, result is right~
+kji
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 40.1739seconds.
+kji: dgemm0 - When n = 2050: elapsed time is 357.256seconds.
+kji: block_size is 10 - When n = 2050: elapsed time is 51.8809seconds.
+dgemm123's max difference is 0, result is right~
+dgemm12310's max difference is 0, result is right~

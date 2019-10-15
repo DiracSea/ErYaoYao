@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     int b;
     char *func_name_cache[] = {"ijk ", "jik ", "kij ", "ikj ", "jki ", "kji ",
                                "bijk", "bjik", "bkij", "bikj", "bjki", "bkji"};
-    int matrix_dim = 2046;
+    int matrix_dim = 2048;
 
     int method_nums = sizeof(func_name_cache) / sizeof(func_name_cache[0]);
     double t0, t1;

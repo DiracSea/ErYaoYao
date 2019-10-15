@@ -1,30 +1,30 @@
 block: 6
-ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 10.0163seconds.
-ijk: block_size is 6 - When n = 2046: elapsed time is 28.7827seconds.
-_3x3_blockn: block_size is 6 - When n = 2046: elapsed time is 14.1732seconds.
+ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 8.49638seconds.
+ijk: block_size is 6 - When n = 2046: elapsed time is 27.7248seconds.
+_3x3_blockn: block_size is 6 - When n = 2046: elapsed time is 14.7515seconds.
 dgemm123's max difference is 0, result is right~
 dgemm303's max difference is 0, result is right~
 block: 33
-ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 10.0387seconds.
-ijk: block_size is 33 - When n = 2046: elapsed time is 19.2487seconds.
-_3x3_blockn: block_size is 33 - When n = 2046: elapsed time is 7.90221seconds.
+ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 8.26977seconds.
+ijk: block_size is 33 - When n = 2046: elapsed time is 19.1105seconds.
+_3x3_blockn: block_size is 33 - When n = 2046: elapsed time is 7.62633seconds.
 dgemm123's max difference is 0, result is right~
 dgemm303's max difference is 0, result is right~
 block: 66
-ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 9.93096seconds.
-ijk: block_size is 66 - When n = 2046: elapsed time is 17.174seconds.
-_3x3_blockn: block_size is 66 - When n = 2046: elapsed time is 7.22188seconds.
+ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 8.27045seconds.
+ijk: block_size is 66 - When n = 2046: elapsed time is 16.8409seconds.
+_3x3_blockn: block_size is 66 - When n = 2046: elapsed time is 6.8062seconds.
 dgemm123's max difference is 0, result is right~
 dgemm303's max difference is 0, result is right~
 block: 186
-ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 9.98118seconds.
-ijk: block_size is 186 - When n = 2046: elapsed time is 16.3476seconds.
-_3x3_blockn: block_size is 186 - When n = 2046: elapsed time is 6.79012seconds.
+ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 8.27094seconds.
+ijk: block_size is 186 - When n = 2046: elapsed time is 15.5393seconds.
+_3x3_blockn: block_size is 186 - When n = 2046: elapsed time is 6.3574seconds.
 dgemm123's max difference is 0, result is right~
 dgemm303's max difference is 0, result is right~
 block: 1023
-ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 10.0419seconds.
-ijk: block_size is 1023 - When n = 2046: elapsed time is 30.0998seconds.
-_3x3_blockn: block_size is 1023 - When n = 2046: elapsed time is 7.9857seconds.
+ijk_block_3x3: dgemm3 - When n = 2046: elapsed time is 8.27084seconds.
+ijk: block_size is 1023 - When n = 2046: elapsed time is 27.7081seconds.
+_3x3_blockn: block_size is 1023 - When n = 2046: elapsed time is 7.26941seconds.
 dgemm123's max difference is 0, result is right~
 dgemm303's max difference is 0, result is right~

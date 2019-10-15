@@ -1,36 +1,36 @@
 ijk
-ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 66.0305seconds.
-ijk - When n = 2050: elapsed time is 145.978seconds.
-ijk: block_size is 10 - When n = 2050: elapsed time is 78.6955seconds.
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 66.5974seconds.
+ijk - When n = 2050: elapsed time is 144.169seconds.
+ijk: block_size is 10 - When n = 2050: elapsed time is 80.4301seconds.
 dgemm123's max difference is 0, result is right~
 dgemm12310's max difference is 0, result is right~
 jik
-ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 66.0319seconds.
-jik: dgemm0 - When n = 2050: elapsed time is 72.7234seconds.
-jik: block_size is 10 - When n = 2050: elapsed time is 72.4008seconds.
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 67.0396seconds.
+jik: dgemm0 - When n = 2050: elapsed time is 72.7559seconds.
+jik: block_size is 10 - When n = 2050: elapsed time is 73.8871seconds.
 dgemm123's max difference is 0, result is right~
 dgemm12310's max difference is 0, result is right~
 ikj
-ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 65.7966seconds.
-ikj: dgemm0 - When n = 2050: elapsed time is 99.4433seconds.
-ikj: block_size is 10 - When n = 2050: elapsed time is 89.5883seconds.
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 66.7434seconds.
+ikj: dgemm0 - When n = 2050: elapsed time is 101.377seconds.
+ikj: block_size is 10 - When n = 2050: elapsed time is 90.9684seconds.
 dgemm123's max difference is 0, result is right~
 dgemm12310's max difference is 0, result is right~
 kij
-ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 66.0223seconds.
-kij: dgemm0 - When n = 2050: elapsed time is 95.9166seconds.
-kij: block_size is 10 - When n = 2050: elapsed time is 89.4712seconds.
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 66.5743seconds.
+kij: dgemm0 - When n = 2050: elapsed time is 99.3904seconds.
+kij: block_size is 10 - When n = 2050: elapsed time is 90.2046seconds.
 dgemm123's max difference is 0, result is right~
 dgemm12310's max difference is 0, result is right~
 jki
-ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 66.0472seconds.
-jki: dgemm0 - When n = 2050: elapsed time is 194.872seconds.
-jki: block_size is 10 - When n = 2050: elapsed time is 109.188seconds.
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 66.5871seconds.
+jki: dgemm0 - When n = 2050: elapsed time is 196.087seconds.
+jki: block_size is 10 - When n = 2050: elapsed time is 111.149seconds.
 dgemm123's max difference is 0, result is right~
 dgemm12310's max difference is 0, result is right~
 kji
-ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 65.9879seconds.
-kji: dgemm0 - When n = 2050: elapsed time is 176.695seconds.
-kji: block_size is 10 - When n = 2050: elapsed time is 144.198seconds.
+ijk_block_2x2: dgemm2 - When n = 2050: elapsed time is 66.747seconds.
+kji: dgemm0 - When n = 2050: elapsed time is 174.898seconds.
+kji: block_size is 10 - When n = 2050: elapsed time is 144.685seconds.
 dgemm123's max difference is 0, result is right~
 dgemm12310's max difference is 0, result is right~

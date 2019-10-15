@@ -1,42 +1,42 @@
-ijk: dgemm0 - When n = 66: elapsed time is 0.00578499seconds.
-ijk: dgemm1 - When n = 66: elapsed time is 0.00311399seconds.
-ijk_block_2x2: dgemm2 - When n = 66: elapsed time is 0.00135612seconds.
-ijk_block_3x3: dgemm3 - When n = 66: elapsed time is 0.00116611seconds.
+ijk: dgemm0 - When n = 66: elapsed time is 0.00374484seconds.
+ijk: dgemm1 - When n = 66: elapsed time is 0.00212383seconds.
+ijk_block_2x2: dgemm2 - When n = 66: elapsed time is 0.000967026seconds.
+ijk_block_3x3: dgemm3 - When n = 66: elapsed time is 0.000731945seconds.
 dgemm1's max difference is 0, result is right~
 dgemm2's max difference is 0, result is right~
 dgemm3's max difference is 0, result is right~
-ijk: dgemm0 - When n = 132: elapsed time is 0.0303349seconds.
-ijk: dgemm1 - When n = 132: elapsed time is 0.017689seconds.
-ijk_block_2x2: dgemm2 - When n = 132: elapsed time is 0.00725198seconds.
-ijk_block_3x3: dgemm3 - When n = 132: elapsed time is 0.00606608seconds.
+ijk: dgemm0 - When n = 132: elapsed time is 0.0310721seconds.
+ijk: dgemm1 - When n = 132: elapsed time is 0.0177178seconds.
+ijk_block_2x2: dgemm2 - When n = 132: elapsed time is 0.00721884seconds.
+ijk_block_3x3: dgemm3 - When n = 132: elapsed time is 0.00603509seconds.
 dgemm1's max difference is 0, result is right~
 dgemm2's max difference is 0, result is right~
 dgemm3's max difference is 0, result is right~
-ijk: dgemm0 - When n = 258: elapsed time is 0.273953seconds.
-ijk: dgemm1 - When n = 258: elapsed time is 0.152088seconds.
-ijk_block_2x2: dgemm2 - When n = 258: elapsed time is 0.0644481seconds.
-ijk_block_3x3: dgemm3 - When n = 258: elapsed time is 0.048805seconds.
+ijk: dgemm0 - When n = 258: elapsed time is 0.274093seconds.
+ijk: dgemm1 - When n = 258: elapsed time is 0.151401seconds.
+ijk_block_2x2: dgemm2 - When n = 258: elapsed time is 0.0637791seconds.
+ijk_block_3x3: dgemm3 - When n = 258: elapsed time is 0.0486832seconds.
 dgemm1's max difference is 0, result is right~
 dgemm2's max difference is 0, result is right~
 dgemm3's max difference is 0, result is right~
-ijk: dgemm0 - When n = 516: elapsed time is 2.51609seconds.
-ijk: dgemm1 - When n = 516: elapsed time is 1.50364seconds.
-ijk_block_2x2: dgemm2 - When n = 516: elapsed time is 0.635987seconds.
-ijk_block_3x3: dgemm3 - When n = 516: elapsed time is 0.44022seconds.
+ijk: dgemm0 - When n = 516: elapsed time is 2.51406seconds.
+ijk: dgemm1 - When n = 516: elapsed time is 1.49978seconds.
+ijk_block_2x2: dgemm2 - When n = 516: elapsed time is 0.632665seconds.
+ijk_block_3x3: dgemm3 - When n = 516: elapsed time is 0.43755seconds.
 dgemm1's max difference is 0, result is right~
 dgemm2's max difference is 0, result is right~
 dgemm3's max difference is 0, result is right~
-ijk: dgemm0 - When n = 1026: elapsed time is 19.6379seconds.
-ijk: dgemm1 - When n = 1026: elapsed time is 12.4442seconds.
-ijk_block_2x2: dgemm2 - When n = 1026: elapsed time is 5.08182seconds.
-ijk_block_3x3: dgemm3 - When n = 1026: elapsed time is 2.91527seconds.
+ijk: dgemm0 - When n = 1026: elapsed time is 19.5187seconds.
+ijk: dgemm1 - When n = 1026: elapsed time is 12.3156seconds.
+ijk_block_2x2: dgemm2 - When n = 1026: elapsed time is 5.06302seconds.
+ijk_block_3x3: dgemm3 - When n = 1026: elapsed time is 2.90347seconds.
 dgemm1's max difference is 0, result is right~
 dgemm2's max difference is 0, result is right~
 dgemm3's max difference is 0, result is right~
-ijk: dgemm0 - When n = 2052: elapsed time is 196.52seconds.
-ijk: dgemm1 - When n = 2052: elapsed time is 106.442seconds.
-ijk_block_2x2: dgemm2 - When n = 2052: elapsed time is 65.4898seconds.
-ijk_block_3x3: dgemm3 - When n = 2052: elapsed time is 31.124seconds.
+ijk: dgemm0 - When n = 2052: elapsed time is 198.409seconds.
+ijk: dgemm1 - When n = 2052: elapsed time is 106.825seconds.
+ijk_block_2x2: dgemm2 - When n = 2052: elapsed time is 65.8919seconds.
+ijk_block_3x3: dgemm3 - When n = 2052: elapsed time is 30.9576seconds.
 dgemm1's max difference is 0, result is right~
 dgemm2's max difference is 0, result is right~
 dgemm3's max difference is 0, result is right~

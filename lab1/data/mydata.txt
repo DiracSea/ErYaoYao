@@ -1,0 +1,40 @@
+
+*********** Register Reuse ***********
+dgemm0 -   66: elapsed time is  0.00061 second(s).
+dgemm0 -  126: elapsed time is  0.00388 second(s).
+dgemm0 -  258: elapsed time is  0.03890 second(s).
+dgemm0 -  510: elapsed time is  0.62610 second(s).
+dgemm0 - 1026: elapsed time is  5.14554 second(s).
+dgemm0 - 2046: elapsed time is 51.57551 second(s).
+dgemm1 -   66: elapsed time is  0.00054 second(s).
+dgemm1 -  126: elapsed time is  0.00364 second(s).
+dgemm1 -  258: elapsed time is  0.03521 second(s).
+dgemm1 -  510: elapsed time is  0.49133 second(s).
+dgemm1 - 1026: elapsed time is  3.91236 second(s).
+dgemm1 - 2046: elapsed time is 38.47784 second(s).
+dgemm2 -   66: elapsed time is  0.00016 second(s).
+dgemm2 -  126: elapsed time is  0.00141 second(s).
+dgemm2 -  258: elapsed time is  0.01423 second(s).
+dgemm2 -  510: elapsed time is  0.15802 second(s).
+dgemm2 - 1026: elapsed time is  2.03307 second(s).
+dgemm2 - 2046: elapsed time is 28.54910 second(s).
+dgemm3 -   66: elapsed time is  0.00012 second(s).
+dgemm3 -  126: elapsed time is  0.00101 second(s).
+dgemm3 -  258: elapsed time is  0.01097 second(s).
+dgemm3 -  510: elapsed time is  0.10362 second(s).
+dgemm3 - 1026: elapsed time is  1.10751 second(s).
+dgemm3 - 2046: elapsed time is  5.67630 second(s).
+
+*********** Cache reuse ***********
+error detected at function bijk, matrix size = 2048.
+error detected at function bjik, matrix size = 2048.
+error detected at function bkij, matrix size = 2048.
+error detected at function bikj, matrix size = 2048.
+error detected at function bjki, matrix size = 2048.
+error detected at function bkji, matrix size = 2048.
+
+*********** Cache reuse - Part 4. ***********
+O0 : elapsed time is  4.65836 second(s).
+O1 : elapsed time is  4.66547 second(s).
+O2 : elapsed time is  4.65257 second(s).
+O3 : elapsed time is  4.65962 second(s).

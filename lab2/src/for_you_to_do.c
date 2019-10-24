@@ -340,7 +340,7 @@ int mydgetrf_block(double *A, int *ipiv, int n, int b)
         {
             for (j = ib+b; j < n; j += b)
             {
-                dgemm3_cache_mod(A, A, A, n, i, j, ib, b);
+                mydgemm(A, A, A, n, i, j, ib, b);
             }
         }
     }

@@ -22,13 +22,14 @@
 int mydgetrf(double *A, int *ipiv, int n) 
 {
     /* add your code here */
+    int i;
     int maxIdx, tmpP; 
     double maxV; // tmpR; 
     double *tmpR = (double*) malloc(sizeof(double) * n); 
 
     // ipiv = idx of pivot\
     // pivoting
-    for (int i = 0; i < n; i++) 
+    for (i = 0; i < n; i++) 
     {
         maxIdx = i; maxV = fabs(A[i*n + i]); 
 
@@ -280,7 +281,6 @@ int mydgetrf_block(double *A, int *ipiv, int n, int b)
             maxIndex = i;
             max = fabs(A[i*n + i]);
             
-            int j;
             for (j = i+1; j < n; j++)
             {
                 if (fabs(A[j*n + i]) > max)

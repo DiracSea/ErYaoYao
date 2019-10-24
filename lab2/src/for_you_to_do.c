@@ -22,7 +22,7 @@
 int mydgetrf(double *A, int *ipiv, int n) 
 {
     /* add your code here */
-    int i;
+    int i, t;
     int maxIdx, tmpP; 
     double maxV; // tmpR; 
     double *tmpR = (double*) malloc(sizeof(double) * n); 
@@ -33,7 +33,7 @@ int mydgetrf(double *A, int *ipiv, int n)
     {
         maxIdx = i; maxV = fabs(A[i*n + i]); 
 
-        for (int t = i+1; t < n; t++) 
+        for (t = i+1; t < n; t++) 
         {
             if (fabs(A[t*n + i]) > maxV) 
             {

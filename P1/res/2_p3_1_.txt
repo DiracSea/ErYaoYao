@@ -1,1 +1,156 @@
-./2_p3_1: /act/gcc-4.7.2/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./2_p3_1)
+ijk: block_size is 32 - When n = 2048: elapsed time is 82.8176seconds.
+ijk: block_size is 64 - When n = 2048: elapsed time is 80.7872seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+ijk, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 102.788seconds.
+ijk: block_size is 128 - When n = 2048: elapsed time is 81.2457seconds.
+ijk: block_size is 256 - When n = 2048: elapsed time is 132.493seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+ijk, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 102.619seconds.
+ijk: block_size is 512 - When n = 2048: elapsed time is 146.807seconds.
+ijk: block_size is 1024 - When n = 2048: elapsed time is 281.297seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+jik, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 103.711seconds.
+jik: block_size is 32 - When n = 2048: elapsed time is 84.3773seconds.
+jik: block_size is 64 - When n = 2048: elapsed time is 82.8945seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+jik, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 103.103seconds.
+jik: block_size is 128 - When n = 2048: elapsed time is 82.5721seconds.
+jik: block_size is 256 - When n = 2048: elapsed time is 136.547seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+jik, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 103.098seconds.
+jik: block_size is 512 - When n = 2048: elapsed time is 140.909seconds.
+jik: block_size is 1024 - When n = 2048: elapsed time is 310.537seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+ikj, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 103.022seconds.
+ikj: block_size is 32 - When n = 2048: elapsed time is 89.6571seconds.
+ikj: block_size is 64 - When n = 2048: elapsed time is 85.0216seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+ikj, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 104.322seconds.
+ikj: block_size is 128 - When n = 2048: elapsed time is 82.6826seconds.
+ikj: block_size is 256 - When n = 2048: elapsed time is 92.1752seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+ikj, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 104.252seconds.
+ikj: block_size is 512 - When n = 2048: elapsed time is 115.511seconds.
+ikj: block_size is 1024 - When n = 2048: elapsed time is 99.501seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+kij, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 104.712seconds.
+ijk, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 102.788seconds.
+ijk: block_size is 128 - When n = 2048: elapsed time is 81.2457seconds.
+ijk: block_size is 256 - When n = 2048: elapsed time is 132.493seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+ijk, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 102.619seconds.
+ijk: block_size is 512 - When n = 2048: elapsed time is 146.807seconds.
+ijk: block_size is 1024 - When n = 2048: elapsed time is 281.297seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+jik, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 103.711seconds.
+jik: block_size is 32 - When n = 2048: elapsed time is 84.3773seconds.
+jik: block_size is 64 - When n = 2048: elapsed time is 82.8945seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+jik, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 103.103seconds.
+jik: block_size is 128 - When n = 2048: elapsed time is 82.5721seconds.
+jik: block_size is 256 - When n = 2048: elapsed time is 136.547seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+jik, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 103.098seconds.
+jik: block_size is 512 - When n = 2048: elapsed time is 140.909seconds.
+jik: block_size is 1024 - When n = 2048: elapsed time is 310.537seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+ikj, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 103.022seconds.
+ikj: block_size is 32 - When n = 2048: elapsed time is 89.6571seconds.
+ikj: block_size is 64 - When n = 2048: elapsed time is 85.0216seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+ikj, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 104.322seconds.
+ikj: block_size is 128 - When n = 2048: elapsed time is 82.6826seconds.
+ikj: block_size is 256 - When n = 2048: elapsed time is 92.1752seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+ikj, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 104.252seconds.
+ikj: block_size is 512 - When n = 2048: elapsed time is 115.511seconds.
+ikj: block_size is 1024 - When n = 2048: elapsed time is 99.501seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+kij, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 104.712seconds.
+kij: block_size is 32 - When n = 2048: elapsed time is 104.902seconds.
+kij: block_size is 64 - When n = 2048: elapsed time is 99.0263seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+kij, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 102.859seconds.
+kij: block_size is 128 - When n = 2048: elapsed time is 87.7033seconds.
+kij: block_size is 256 - When n = 2048: elapsed time is 91.938seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+kij, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 104.287seconds.
+kij: block_size is 512 - When n = 2048: elapsed time is 108.756seconds.
+kij: block_size is 1024 - When n = 2048: elapsed time is 105.739seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+jki, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 104.137seconds.
+jki: block_size is 32 - When n = 2048: elapsed time is 120.757seconds.
+jki: block_size is 64 - When n = 2048: elapsed time is 117.133seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+jki, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 103.114seconds.
+jki: block_size is 128 - When n = 2048: elapsed time is 116.266seconds.
+jki: block_size is 256 - When n = 2048: elapsed time is 184.099seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+jki, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 103.663seconds.
+jki: block_size is 512 - When n = 2048: elapsed time is 193.609seconds.
+jki: block_size is 1024 - When n = 2048: elapsed time is 366.994seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~
+kji, Block: 32 and 64
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 102.794seconds.
+kji: block_size is 32 - When n = 2048: elapsed time is 119.354seconds.
+kji: block_size is 64 - When n = 2048: elapsed time is 116.74seconds.
+dgemm32's max difference is 0, result is right~
+dgemm64's max difference is 0, result is right~
+kji, Block: 128 and 256
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 104.663seconds.
+kji: block_size is 128 - When n = 2048: elapsed time is 115.615seconds.
+kji: block_size is 256 - When n = 2048: elapsed time is 188.238seconds.
+dgemm128's max difference is 0, result is right~
+dgemm256's max difference is 0, result is right~
+kji, Block: 512 and 1024
+ijk_block_2x2: dgemm2 - When n = 2048: elapsed time is 102.843seconds.
+kji: block_size is 512 - When n = 2048: elapsed time is 196.163seconds.
+kji: block_size is 1024 - When n = 2048: elapsed time is 366.961seconds.
+dgemm512's max difference is 0, result is right~
+dgemm1024's max difference is 0, result is right~

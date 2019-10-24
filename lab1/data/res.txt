@@ -1,0 +1,45 @@
+*********** Register Reuse ***********
+dgemm0 -   66: elapsed time is  0.00061 second(s).
+dgemm0 -  126: elapsed time is  0.00388 second(s).
+dgemm0 -  258: elapsed time is  0.03889 second(s).
+dgemm0 -  510: elapsed time is  0.58626 second(s).
+dgemm0 - 1026: elapsed time is  5.35272 second(s).
+dgemm0 - 2046: elapsed time is 51.74367 second(s).
+dgemm1 -   66: elapsed time is  0.00054 second(s).
+dgemm1 -  126: elapsed time is  0.00365 second(s).
+dgemm1 -  258: elapsed time is  0.03521 second(s).
+dgemm1 -  510: elapsed time is  0.49139 second(s).
+dgemm1 - 1026: elapsed time is  3.86265 second(s).
+dgemm1 - 2046: elapsed time is 38.18782 second(s).
+dgemm2 -   66: elapsed time is  0.00016 second(s).
+dgemm2 -  126: elapsed time is  0.00144 second(s).
+dgemm2 -  258: elapsed time is  0.01421 second(s).
+dgemm2 -  510: elapsed time is  0.16182 second(s).
+dgemm2 - 1026: elapsed time is  1.99811 second(s).
+dgemm2 - 2046: elapsed time is 28.49845 second(s).
+dgemm3 -   66: elapsed time is  0.00012 second(s).
+dgemm3 -  126: elapsed time is  0.00099 second(s).
+dgemm3 -  258: elapsed time is  0.01095 second(s).
+dgemm3 -  510: elapsed time is  0.10390 second(s).
+dgemm3 - 1026: elapsed time is  1.09313 second(s).
+dgemm3 - 2046: elapsed time is  5.68864 second(s).
+
+*********** Cache reuse ***********
+ijk : elapsed time is 39.23978 second(s).
+jik : elapsed time is 20.60740 second(s).
+kij : elapsed time is 16.95061 second(s).
+ikj : elapsed time is 16.41684 second(s).
+jki : elapsed time is 64.02065 second(s).
+kji : elapsed time is 64.34116 second(s).
+bijk: elapsed time is 19.93646 second(s).
+bjik: elapsed time is 16.26251 second(s).
+bkij: elapsed time is 21.25568 second(s).
+bikj: elapsed time is 20.31971 second(s).
+bjki: elapsed time is 21.35640 second(s).
+bkji: elapsed time is 33.54339 second(s).
+
+*********** Cache reuse - Part 4. ***********
+O0 : elapsed time is  4.64026 second(s).
+O1 : elapsed time is  4.65767 second(s).
+O2 : elapsed time is  4.64383 second(s).
+O3 : elapsed time is  4.65082 second(s).

@@ -2,7 +2,7 @@
  * @Author: Longze Su
  * @Date: 2019-10-13 22:44:02
  * @Description: CS211_Project1
- * @LastEditTime: 2019-10-14 02:23:17
+ * @LastEditTime: 2019-10-18 17:30:51
  * @LastEditors: Longze Su
  */
 
@@ -38,6 +38,7 @@ void Dgemm::dgemm4(double* a, double* b, double* c, int n)
                 register double b01 = b[k*n + j+1]; 
                 register double b10 = b[(k+1)*n + j]; 
                 register double b11 = b[(k+1)*n + j+1];
+                // 7m + 18a
                 register double m1 = (a00 + a11) * (b00 + b11); 
                 register double m2 = (a10 + a11) * b00;
                 register double m3 = a00 * (b01 - b11);

@@ -23,7 +23,7 @@ int mydgetrf(double *A, int *ipiv, int n)
 {
     /* add your code here */
     int i, t;
-    int maxIdx, tmpP; 
+    int maxIdx; 
     double maxV; // tmpR; 
     double *tmpR = (double*) malloc(sizeof(double) * n); 
 
@@ -42,15 +42,15 @@ int mydgetrf(double *A, int *ipiv, int n)
         }
         if (maxV == 0) 
         {
-            printf("Zero Row, Terminated.\n");
-            return 0; 
+            printf("A is singular, Terminated.\n");
+            return -1; 
         }
         else 
         {
             if (maxIdx != i) // pivoting
             {
                 // save pivot
-                tmpP = ipiv[i]; 
+                int tmpP = ipiv[i]; 
                 ipiv[i] = ipiv[maxIdx]; 
                 ipiv[maxIdx] = tmpP; 
 
@@ -118,7 +118,8 @@ void mydtrsv(char UPLO, double *A, double *B, int n, int *ipiv)
     /* add your code here */
     // UPLO = 'L' or 'U' 
     double *y = (double*) malloc(n * sizeof(double)); 
-    memset(y, 0.0, sizeof(double)); // set 0
+    // set 0
+    memset(y, 0.0, sizeof(double)); 
 
     double sum; 
     int i, j; 
@@ -151,8 +152,8 @@ void mydtrsv(char UPLO, double *A, double *B, int n, int *ipiv)
         }
     }
 
-    free(y); 
     memcpy(B, y, sizeof(double)*n); 
+    free(y); 
     return;
 }
 
@@ -269,50 +270,55 @@ void mydgemm(double *a, double *b, double *c, int n, int i, int j, int k, int B)
  **/
 int mydgetrf_block(double *A, int *ipiv, int n, int b) 
 {
-    int ib, i, j, k, maxIndex;
+    int ib, i, j, k, maxIdx;
     double max, sum;
-    double *temprow = (double*) malloc(sizeof(double) * n);
+    double *tmpR = (double*) malloc(sizeof(double) * n);
 
+    // blocking 
     for (ib = 0; ib < n; ib += b)
     {
+        // out of bound 
         for (i = ib; i < ib+b && i < n; i++)
         {
             // pivoting
-            maxIndex = i;
+            maxIdx = i;
             max = fabs(A[i*n + i]);
             
             for (j = i+1; j < n; j++)
             {
                 if (fabs(A[j*n + i]) > max)
                 {
-                    maxIndex = j;
+                    maxIdx = j;
                     max = fabs(A[j*n + i]);
                 }
             }
             if (max == 0)
             {
-                printf("LU factorization failed: coefficient matrix is singular.\n");
+                printf("A is singular, Terminated.\n");
                 return -1;
             }
             else
             {
-                if (maxIndex != i)
+                if (maxIdx != i)
                 {
-                    // save pivoting information
-                    int temp = ipiv[i];
-                    ipiv[i] = ipiv[maxIndex];
-                    ipiv[maxIndex] = temp;
+                    // save pivoting 
+                    int tmp = ipiv[i];
+                    ipiv[i] = ipiv[maxIdx];
+                    ipiv[maxIdx] = tmp;
+                    
                     // swap rows
-                    memcpy(temprow, A + i*n, n * sizeof(double));
-                    memcpy(A + i*n, A + maxIndex*n, n * sizeof(double));
-                    memcpy(A + maxIndex*n, temprow, n * sizeof(double));
+                    memcpy(tmpR, A + i*n, n * sizeof(double));
+                    memcpy(A + i*n, A + maxIdx*n, n * sizeof(double));
+                    memcpy(A + maxIdx*n, tmpR, n * sizeof(double));
                 }
             }
 
             // factorization
+
             for (j = i+1; j < n; j++)
             {
                 A[j*n + i] = A[j*n + i] / A[i*n + i];
+                
                 int k;
                 for (k = i+1; k < ib+b && k < n; k++)
                 {
@@ -321,12 +327,12 @@ int mydgetrf_block(double *A, int *ipiv, int n, int b)
             }
         }
 
-        // update A(ib:end, end+1:n)
+        // update
         for (i = ib; i < ib+b && i < n; i++)
         {
             for (j = ib+b; j < n; j++)
             {
-                sum = 0;
+                sum = 0.0;
                 for (k = ib; k < i; k++)
                 {
                     sum += A[i*n + k] * A[k*n + j];
@@ -335,7 +341,7 @@ int mydgetrf_block(double *A, int *ipiv, int n, int b)
             }
         }
 
-        // update A(end+1:n, end+1:n)
+        // update
         for (i = ib+b; i < n; i += b)
         {
             for (j = ib+b; j < n; j += b)

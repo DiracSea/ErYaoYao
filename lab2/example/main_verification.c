@@ -9,7 +9,7 @@
 
 int main(int argc, char const *argv[])
 {
-	test_all_lu_functions(1);
+	test_all_lu_functions(0);
 	return 0; 
 //return 0;
 }

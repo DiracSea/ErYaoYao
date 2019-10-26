@@ -166,77 +166,75 @@ void mydgemm(double *a, double *b, double *c, int n, int i, int j, int k, int B)
     /* add your code here */
     /* please just copy from your lab1 function optimal( ... ) */
     int i1, j1, k1, l; 
-    for (i = 0; i < n; i+=B)
-        for (j = 0; j < n; j+=B)
-            for (k = 0; k < n; k+=B)
+    // for (i = 0; i < n; i+=B)
+    //     for (j = 0; j < n; j+=B)
+    //         for (k = 0; k < n; k+=B)
             // cache block
-            /* B x B mini matrix multiplications */
+    /* B x B mini matrix multiplications */
+    
+    // prevent over boundary 
+    int n_i3 = i+B > n ? n:i+B; 
+    int n_j3 = j+B > n ? n:j+B; 
+    int n_k3 = k+B > n ? n:k+B;
+
+    // register block
+    for (i1 = i; i1 < n_i3; i1 += 3)
+    {
+        for (j1 = j; j1 < n_j3; j1 += 3)
+        {
+            int n0 = i1*n + j1; 
+            int n1 = n0 + n; 
+            int n2 = n1 + n; 
+
+            register double c00 = c[n0]; 
+            register double c01 = c[n0 + 1];
+            register double c02 = c[n0 + 2];
+            register double c10 = c[n1]; 
+            register double c11 = c[n1 + 1];
+            register double c12 = c[n1 + 2];
+            register double c20 = c[n2];
+            register double c21 = c[n2 + 1];
+            register double c22 = c[n2 + 2];
+
+            for (k1 = k; k1 < n_k3; k1 += 3)
             {
-                
-                // prevent over boundary 
-                int n_i3 = i+B > n ? n:i+B; 
-                int n_j3 = j+B > n ? n:j+B; 
-                int n_k3 = k+B > n ? n:k+B;
 
-                // register block
-                for (i1 = i; i1 < n_i3; i1 += 3)
+                for (l = 0; l < 3; l++) 
                 {
-                    for (j1 = j; j1 < n_j3; j1 += 3)
-                    {
-                        int n0 = i1*n + j1; 
-                        int n1 = n0 + n; 
-                        int n2 = n1 + n; 
+                    int n0a = i1*n + k1 + l; 
+                    int n1a = n0a + n; 
+                    int n2a = n1a + n; 
+                    int n0b = k1*n + j1 + l*n; 
 
-                        register double c00 = c[n0]; 
-                        register double c01 = c[n0 + 1];
-                        register double c02 = c[n0 + 2];
-                        register double c10 = c[n1]; 
-                        register double c11 = c[n1 + 1];
-                        register double c12 = c[n1 + 2];
-                        register double c20 = c[n2];
-                        register double c21 = c[n2 + 1];
-                        register double c22 = c[n2 + 2];
+                    register double a0 = a[n0a];
+                    register double a1 = a[n1a]; 
+                    register double a2 = a[n2a]; 
+                    register double b0 = b[n0b]; 
+                    register double b1 = b[n0b + 1]; 
+                    register double b2 = b[n0b + 2]; 
 
-                        for (k1 = k; k1 < n_k3; k1 += 3)
-                        {
-
-                            for (l = 0; l < 3; l++) 
-                            {
-                                int n0a = i1*n + k1 + l; 
-                                int n1a = n0a + n; 
-                                int n2a = n1a + n; 
-                                int n0b = k1*n + j1 + l*n; 
-
-                                register double a0 = a[n0a];
-                                register double a1 = a[n1a]; 
-                                register double a2 = a[n2a]; 
-                                register double b0 = b[n0b]; 
-                                register double b1 = b[n0b + 1]; 
-                                register double b2 = b[n0b + 2]; 
-
-                                c00 += a0*b0; 
-                                c01 += a0*b1; 
-                                c02 += a0*b2; 
-                                c10 += a1*b0; 
-                                c11 += a1*b1; 
-                                c12 += a1*b2; 
-                                c20 += a2*b0; 
-                                c21 += a2*b1; 
-                                c22 += a2*b2; 
-                            }
-                        }
-                        c[n0] = c00;
-                        c[n0 + 1] = c01;
-                        c[n0 + 2] = c02;
-                        c[n1] = c10;
-                        c[n1 + 1] = c11;
-                        c[n1 + 2] = c12;
-                        c[n2] = c20;
-                        c[n2 + 1] = c21;
-                        c[n2 + 2] = c22;
-                    }
+                    c00 += a0*b0; 
+                    c01 += a0*b1; 
+                    c02 += a0*b2; 
+                    c10 += a1*b0; 
+                    c11 += a1*b1; 
+                    c12 += a1*b2; 
+                    c20 += a2*b0; 
+                    c21 += a2*b1; 
+                    c22 += a2*b2; 
                 }
             }
+            c[n0] = c00;
+            c[n0 + 1] = c01;
+            c[n0 + 2] = c02;
+            c[n1] = c10;
+            c[n1 + 1] = c11;
+            c[n1 + 2] = c12;
+            c[n2] = c20;
+            c[n2 + 1] = c21;
+            c[n2 + 2] = c22;
+        }
+    }
     return;
 }
 
@@ -332,13 +330,13 @@ int mydgetrf_block(double *A, int *ipiv, int n, int b)
                 int k;
                 for (k = i+1; k < i_block+b && k < n; k++) 
                 {
-                    A[j*n + k] -= A[j*n +i] * A[i*n + k]; // get L
+                    A[j*n + k] -= A[j*n +i] * A[i*n + k]; // get naive U
                 }
             }
         }
 
         // BLAS3 
-        
+
         // update next b rows of U
         // A(ib:end, end+1:n) = L*L-1*A(ib:end, end+1:n)
         for (i = i_block; i < i_block+b && i < n; i++)
@@ -356,6 +354,7 @@ int mydgetrf_block(double *A, int *ipiv, int n, int b)
 
         // update A(end+1:n, end+1:n)
         // apply delayed updates with MM with inner dimension b
+        // kij ijk
         for (i = i_block+b; i < n; i += b)
         {
             for (j = i_block+b; j < n; j += b)

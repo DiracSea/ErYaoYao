@@ -1,0 +1,21 @@
+b = 30 
+ n = 102
+Elapsed time, MKL LAPACK: 0.027456 seconds
+Elapsed time, naive LU: 0.004748 seconds
+Elapsed time, block LU: 0.050159 seconds
+ n = 201
+Elapsed time, MKL LAPACK: 0.001749 seconds
+Elapsed time, naive LU: 0.029765 seconds
+Elapsed time, block LU: 2.300156 seconds
+ n = 300
+Elapsed time, MKL LAPACK: 0.005196 seconds
+Elapsed time, naive LU: 0.098959 seconds
+Elapsed time, block LU: 23.862338 seconds
+ n = 402
+Elapsed time, MKL LAPACK: 0.009921 seconds
+Elapsed time, naive LU: 0.236206 seconds
+Elapsed time, block LU: 166.087365 seconds
+ n = 501
+Elapsed time, MKL LAPACK: 0.016299 seconds
+Elapsed time, naive LU: 0.462213 seconds
+Elapsed time, block LU: 589.351964 seconds

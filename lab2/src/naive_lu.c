@@ -5,7 +5,7 @@ void naive_lu(double *A, double *B, int n)
 {
     int ipiv[n], i;
     for (i = 0; i < n; i++) {
-        ipiv[i] = i; // number array
+        ipiv[i] = i; // pivoting array
     }
 
     int success = mydgetrf(A, ipiv, n);

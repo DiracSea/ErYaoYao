@@ -213,15 +213,17 @@ void mydgemm(double *a, double *b, double *c, int n, int i, int j, int k, int B)
                     register double b1 = b[n0b + 1]; 
                     register double b2 = b[n0b + 2]; 
 
-                    c00 += a0*b0; 
-                    c01 += a0*b1; 
-                    c02 += a0*b2; 
-                    c10 += a1*b0; 
-                    c11 += a1*b1; 
-                    c12 += a1*b2; 
-                    c20 += a2*b0; 
-                    c21 += a2*b1; 
-                    c22 += a2*b2; 
+                    // A(end+1:n, end+1:n) -= A(end+1:n, ib:end)*A(ib:end, end+1:n)    
+
+                    c00 -= a0*b0; 
+                    c01 -= a0*b1; 
+                    c02 -= a0*b2; 
+                    c10 -= a1*b0; 
+                    c11 -= a1*b1; 
+                    c12 -= a1*b2; 
+                    c20 -= a2*b0; 
+                    c21 -= a2*b1; 
+                    c22 -= a2*b2; 
                 }
             }
             c[n0] = c00;
@@ -354,7 +356,7 @@ int mydgetrf_block(double *A, int *ipiv, int n, int b)
 
         // update A(end+1:n, end+1:n)
         // apply delayed updates with MM with inner dimension b
-        // kij ijk
+        // kij ijk i_block+b
         for (i = i_block+b; i < n; i += b)
         {
             for (j = i_block+b; j < n; j += b)

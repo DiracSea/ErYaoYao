@@ -19,3 +19,56 @@ Elapsed time, block LU: 166.087365 seconds
 Elapsed time, MKL LAPACK: 0.016299 seconds
 Elapsed time, naive LU: 0.462213 seconds
 Elapsed time, block LU: 589.351964 seconds
+
+ n = 1002
+Elapsed time, MKL LAPACK: 0.141508 seconds
+Elapsed time, naive LU: 3.762490 seconds
+Elapsed time, block LU: 1.573115 seconds
+my block LU is incorrect.
+ n = 2001
+Elapsed time, MKL LAPACK: 0.540886 seconds
+Elapsed time, naive LU: 30.195395 seconds
+Elapsed time, block LU: 10.162603 seconds
+my block LU is incorrect.
+ n = 3000
+Elapsed time, MKL LAPACK: 1.621153 seconds
+Elapsed time, naive LU: 104.588800 seconds
+Elapsed time, block LU: 32.719708 seconds
+my block LU is incorrect.
+ n = 4002
+Elapsed time, MKL LAPACK: 3.523005 seconds
+Elapsed time, naive LU: 242.155931 seconds
+Elapsed time, block LU: 74.404217 seconds
+my block LU is incorrect.
+ n = 5001
+Elapsed time, MKL LAPACK: 6.671949 seconds
+Elapsed time, naive LU: 485.790164 seconds
+Elapsed time, block LU: 142.485866 seconds
+my block LU is incorrect.
+
+
+ n = 102 
+Elapsed time, MKL LAPACK: 0.022932 seconds
+Elapsed time, naive LU: 0.005275 seconds
+Elapsed time, block LU: 0.002311 seconds
+my block LU is incorrect.
+ n = 201 
+Elapsed time, MKL LAPACK: 0.001744 seconds
+Elapsed time, naive LU: 0.030525 seconds
+Elapsed time, block LU: 0.013430 seconds
+my block LU is incorrect.
+ n = 300 
+Elapsed time, MKL LAPACK: 0.004879 seconds
+Elapsed time, naive LU: 0.098478 seconds
+Elapsed time, block LU: 0.039210 seconds
+my block LU is incorrect.
+ n = 402 
+Elapsed time, MKL LAPACK: 0.009819 seconds
+Elapsed time, naive LU: 0.240915 seconds
+Elapsed time, block LU: 0.086973 seconds
+my block LU is incorrect.
+ n = 501 
+Elapsed time, MKL LAPACK: 0.016002 seconds
+Elapsed time, naive LU: 0.463017 seconds
+Elapsed time, block LU: 0.173597 seconds
+my block LU is incorrect.

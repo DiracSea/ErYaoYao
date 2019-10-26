@@ -31,17 +31,16 @@ int test_all_lu_functions(int flag)
      *      yzhai015 AT ucr DOT edu
      *
      **/
-    int ni; int[] nList; 
+    int ni; int nList[] = {1002, 2001, 3000, 4002, 5001};
+    int nList1[] = {102, 201, 300, 402, 501};
     int b = 126; 
-    if (flag == 0) 
-        nList = {1002, 2001, 3000, 4002, 5001};
-    else if (flag == 1) 
-    {
-        nList = {102, 201, 300, 402, 501};
+    if (flag == 1)
         b = 30; 
-    }
     for (ni = 0; ni < sizeof(nList) / sizeof(nList[0]); ni++) {
         int n = nList[ni], i, j;
+        
+        if (flag == 1) 
+            n = nList1[ni]; 
 
         // feel free to modify the block size by yourself.
 

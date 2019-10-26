@@ -9,6 +9,6 @@
 #include <sys/time.h>
 #include <stdbool.h>
 
-int test_all_lu_functions();
+int test_all_lu_functions(int flag);
 
 #endif // _LU_TEST_H_

@@ -22,8 +22,7 @@
 int mydgetrf(double *A, int *ipiv, int n) 
 {
     /* add your code here */
-    int i, t;
-    int maxIdx; 
+    int i, t, maxIdx; 
     double maxV; // tmpR; 
     double *tmpR = (double*) malloc(sizeof(double) * n); 
 
@@ -50,9 +49,9 @@ int mydgetrf(double *A, int *ipiv, int n)
             if (maxIdx != i) // pivoting
             {
                 // save pivot
-                int tmpP = ipiv[i]; 
+                int tmp = ipiv[i]; 
                 ipiv[i] = ipiv[maxIdx]; 
-                ipiv[maxIdx] = tmpP; 
+                ipiv[maxIdx] = tmp; 
 
                 // swap
 
@@ -187,6 +186,7 @@ void mydgemm(double *a, double *b, double *c, int n, int i, int j, int k, int B)
                         int n0 = i1*n + j1; 
                         int n1 = n0 + n; 
                         int n2 = n1 + n; 
+
                         register double c00 = c[n0]; 
                         register double c01 = c[n0 + 1];
                         register double c02 = c[n0 + 2];
@@ -199,6 +199,7 @@ void mydgemm(double *a, double *b, double *c, int n, int i, int j, int k, int B)
 
                         for (k1 = k; k1 < n_k3; k1 += 3)
                         {
+
                             for (l = 0; l < 3; l++) 
                             {
                                 int n0a = i1*n + k1 + l; 
@@ -270,20 +271,25 @@ void mydgemm(double *a, double *b, double *c, int n, int i, int j, int k, int B)
  **/
 int mydgetrf_block(double *A, int *ipiv, int n, int b) 
 {
-    int ib, i, j, k, maxIdx;
+    int i_block, i, j, k, maxIdx;
     double max, sum;
     double *tmpR = (double*) malloc(sizeof(double) * n);
 
-    // blocking 
-    for (ib = 0; ib < n; ib += b)
+    // blocking, blocksize is b
+    // process matrix b col at a time
+    for (i_block = 0; i_block < n; i_block += b)
     {
-        // out of bound 
-        for (i = ib; i < ib+b && i < n; i++)
+        // prevent out of bound i < i_block+b
+        // the block start point is i 
+        // BLAS2 version of GEPP to block
+        for (i = i_block; i < i_block+b && i < n; i++)
         {
             // pivoting
             maxIdx = i;
+            // max value in a row
             max = fabs(A[i*n + i]);
             
+            // find pivoting idx
             for (j = i+1; j < n; j++)
             {
                 if (fabs(A[j*n + i]) > max)
@@ -299,6 +305,7 @@ int mydgetrf_block(double *A, int *ipiv, int n, int b)
             }
             else
             {
+                // begin swap
                 if (maxIdx != i)
                 {
                     // save pivoting 
@@ -313,40 +320,48 @@ int mydgetrf_block(double *A, int *ipiv, int n, int b)
                 }
             }
 
-            // factorization
+            // factorization of block
+            // get A(i_block:n, i_block:i_block+b) = P*L*U
+            // delay update
+            // i = i_block:i_block+b
 
             for (j = i+1; j < n; j++)
             {
-                A[j*n + i] = A[j*n + i] / A[i*n + i];
+                A[j*n + i] = A[j*n + i] / A[i*n + i]; // store multiple coefficiency
                 
                 int k;
-                for (k = i+1; k < ib+b && k < n; k++)
+                for (k = i+1; k < i_block+b && k < n; k++) 
                 {
-                    A[j*n + k] -= A[j*n +i] * A[i*n + k];
+                    A[j*n + k] -= A[j*n +i] * A[i*n + k]; // get L
                 }
             }
         }
 
-        // update
-        for (i = ib; i < ib+b && i < n; i++)
+        // BLAS3 
+        
+        // update next b rows of U
+        // A(ib:end, end+1:n) = L*L-1*A(ib:end, end+1:n)
+        for (i = i_block; i < i_block+b && i < n; i++)
         {
-            for (j = ib+b; j < n; j++)
+            for (j = i_block+b; j < n; j++)
             {
                 sum = 0.0;
-                for (k = ib; k < i; k++)
+                for (k = i_block; k < i; k++)
                 {
                     sum += A[i*n + k] * A[k*n + j];
                 }
-                A[i*n + j] -= sum;
+                A[i*n + j] -= sum; // update U
             }
         }
 
-        // update
-        for (i = ib+b; i < n; i += b)
+        // update A(end+1:n, end+1:n)
+        // apply delayed updates with MM with inner dimension b
+        for (i = i_block+b; i < n; i += b)
         {
-            for (j = ib+b; j < n; j += b)
+            for (j = i_block+b; j < n; j += b)
             {
-                mydgemm(A, A, A, n, i, j, ib, b);
+                // mydgemm(double *a, double *b, double *c, int n, int i, int j, int k, int blocksize)
+                mydgemm(A, A, A, n, i, j, i_block, b);
             }
         }
     }

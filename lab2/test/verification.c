@@ -19,7 +19,7 @@
  * 
  * @return int 
  */
-int test_all_lu_functions()
+int test_all_lu_functions(int flag)
 {
     /**
      *  If you are going to change test matrix size
@@ -32,11 +32,16 @@ int test_all_lu_functions()
      *
      **/
     int ni, nList[] = {1002, 2001, 3000, 4002, 5001};
+    int b = 126
+    if (flag == 1) 
+    {
+        nList[] = {102, 201, 300, 402, 501};
+        b = 6
+    }
     for (ni = 0; ni < sizeof(nList) / sizeof(nList[0]); ni++) {
         int n = nList[ni], i, j;
 
         // feel free to modify the block size by yourself.
-        int b;
 
         printf(" n = %d \n", n);
         double *A1, *A2, *B1, *B2, *A3, *B3;
@@ -74,9 +79,9 @@ int test_all_lu_functions()
             printf("my naive LU is incorrect.\n");
 
         t0 = get_sec();    
-        block_lu(A3, B3, n, b = 126);
+        block_lu(A3, B3, n, b);
         t1 = get_sec();
-        printf("Elapsed time, block LU: %lf seconds\n", t1 - t0; 
+        printf("Elapsed time, block LU: %lf seconds\n", t1 - t0); 
         if (verify_matrix(A1, A3, n, n) || verify_matrix(B1, B3, n, 1))
             printf("my block LU is incorrect.\n");
 

@@ -33,6 +33,7 @@ void Dgemm::dgemm_ijk_blockn(double* a, double* b, double* c, int n, int B)
     io.output_b("ijk", B, n, t1-t0); 
 }
 // dgemm 3x3 register and cache
+// block of block
 void Dgemm::dgemm_3x3_blockn(double* a, double* b, double* c, int n, int B)
 {
     double t0, t1; 

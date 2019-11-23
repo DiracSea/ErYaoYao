@@ -50,11 +50,11 @@ int main (int argc, char *argv[])
 
    // odd list
    // if even, removing it; if odd, keeping it
-   low_value += (low_value+1)&1; // -> 
-   high_value -= (high_value+1)&1; // <- 
+   low_value += low_value&1; // -> 
+   high_value -= high_value&1; // <- 
 
    // size is odd number
-   size = (high_value - low_value)/2 + 1;
+   size = (high_value - low_value)>>1 + 1;
 
    /* Bail out if all the primes used for sieving are
       not all held by process 0 */
@@ -102,7 +102,7 @@ int main (int argc, char *argv[])
       for (i = first; i < size; i += prime) marked[i] = 1;
       // p0, get prime
       if (!id) {
-         while (marked[++index] == 1); // find next prime
+         while (marked[++index]); // find next prime
          prime = 3 + index*2; // primes in p0
       }
       if (p > 1) MPI_Bcast(&prime, 1, MPI_INT, 0, MPI_COMM_WORLD);

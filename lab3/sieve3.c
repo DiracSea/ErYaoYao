@@ -67,11 +67,11 @@ int main (int argc, char *argv[])
 
    // odd list
    // if even, removing it; if odd, keeping it
-   low_value += (low_value + 1) % 2; // -> 
-   high_value -= (high_value + 1) % 2; // <- 
+   low_value += (low_value)&1; // -> 
+   high_value -= (high_value)&1; // <- 
 
    // size is odd number
-   size = (high_value - low_value)/2 + 1;
+   size = (high_value - low_value)>>1 + 1;
    local_prime_size = (int)sqrt((double)(n)) - 1; 
 
    /* Bail out if all the primes used for sieving are

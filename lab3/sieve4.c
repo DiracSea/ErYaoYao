@@ -96,7 +96,7 @@ int main (int argc, char *argv[])
          // 1 [p*((low%p)&1+1) - low%p]>>1
          // [p - low%p + (low/p+1)&1*p]>>1
          // 2 [p*((low/p+1)&1+1) - low%p]>>1
-         else first = (prime * ((low_value%prime + 1)&1 + 1) - low_value%prime)/2; // cannot be divided 
+         else first = (prime * (((low_value/prime)&1) + 1) - (low_value%prime))>>1; // cannot be divided 
       }
       // mark all that prime list
       for (i = first; i < size; i += prime) marked[i] = 1;

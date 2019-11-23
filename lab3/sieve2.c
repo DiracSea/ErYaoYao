@@ -108,8 +108,7 @@ int main (int argc, char *argv[])
       else {
          if (!(low_value%prime)) 
             first = 0;
-         else 
-            first = (prime * ((low_value/prime)&1 + 1) - low_value%prime)/2; 
+         else first = (prime * (((low_value/prime)&1) + 1) - (low_value%prime))>>1; // cannot be divided 
       }
       for (i = first; i < size; i += prime) 
          marked[i] = 1; 

@@ -1,1 +1,1 @@
-The total number of prime: 1083473019, total time:   4.087372, total node 64
+The total number of prime: 455052511, total time:   6.941115, total node 64

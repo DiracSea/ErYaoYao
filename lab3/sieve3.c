@@ -101,7 +101,7 @@ int main (int argc, char *argv[])
       local_first = local_prime * local_prime - 2; 
       for (i = local_first; i < local_prime_size; i += local_prime) 
          local_prime_marked[i] = 1; 
-      while (local_prime_marked[++index] == 1); 
+      while (local_prime_marked[++index]); 
       local_prime = 2 + index; 
    } while (local_prime * local_prime <= n); 
 
@@ -121,9 +121,9 @@ int main (int argc, char *argv[])
    // 2: 8192K
    // cache_alignment 64B
    // long long 8B
-   block_size = 1200000; 
+   block_size = 1048576; 
    block_low_value = low_value; 
-   block_high_value = block_low_value + 2 * (block_size - 1); 
+   block_high_value = block_low_value + 2*(block_size - 1); 
 
    // each block test seperately
    do {
@@ -138,7 +138,7 @@ int main (int argc, char *argv[])
          }
          for (i = first + (block_low_value - low_value)/2; i <= (block_high_value - low_value)/2; i += prime)
             marked[i] = 1; 
-         while (local_prime_marked[++index] == 1); 
+         while (local_prime_marked[++index]); 
          prime = index + 2; 
       }
       block_low_value = block_high_value + 2; 

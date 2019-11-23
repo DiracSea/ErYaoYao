@@ -46,7 +46,7 @@ int main (int argc, char *argv[])
 
    // common list
    low_value = 2 + id * (n - 1) / p;
-   high_value = low_value + (n - 1)/p - 1; 
+   high_value = 1 + (id + 1) * (n - 1)/p; 
 
    // odd list
    // if even, removing it; if odd, keeping it
@@ -102,7 +102,7 @@ int main (int argc, char *argv[])
       for (i = first; i < size; i += prime) marked[i] = 1;
       // p0, get prime
       if (!id) {
-         while (marked[++index]); // find next prime
+         while (marked[++index] == 1); // find next prime
          prime = 3 + index*2; // primes in p0
       }
       if (p > 1) MPI_Bcast(&prime, 1, MPI_INT, 0, MPI_COMM_WORLD);

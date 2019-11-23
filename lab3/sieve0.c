@@ -4,7 +4,7 @@
  *   Programmed by Michael J. Quinn
  *
  *   Last modification: 7 September 2001
- */
+ */ 
 
 #include "mpi.h"
 #include <math.h>

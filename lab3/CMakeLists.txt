@@ -11,13 +11,19 @@ add_executable(sieve0 sieve0.c)
 add_executable(sieve1 sieve1.c)
 add_executable(sieve2 sieve2.c)
 add_executable(sieve3 sieve3.c)
+add_executable(sieve3 sieve4.c)
+add_executable(sieve3 sieve5.c)
+add_executable(sieve3 sieve6.c)
 
-set(TARGET_LIST "sieve0 sieve1 sieve2 sieve3")
+set(TARGET_LIST "sieve0 sieve1 sieve2 sieve3 sieve4 sieve5 sieve6")
 
 target_link_libraries(sieve0 ${MPI_LIBRARIES})
 target_link_libraries(sieve1 ${MPI_LIBRARIES})
 target_link_libraries(sieve2 ${MPI_LIBRARIES})
 target_link_libraries(sieve3 ${MPI_LIBRARIES})
+target_link_libraries(sieve4 ${MPI_LIBRARIES})
+target_link_libraries(sieve5 ${MPI_LIBRARIES})
+target_link_libraries(sieve6 ${MPI_LIBRARIES})
 
 if(MPI_COMPILE_FLAGS)
   set_target_properties(sieve0 PROPERTIES
@@ -27,6 +33,12 @@ if(MPI_COMPILE_FLAGS)
   set_target_properties(sieve2 PROPERTIES
     COMPILE_FLAGS "${MPI_COMPILE_FLAGS}")
   set_target_properties(sieve3 PROPERTIES
+    COMPILE_FLAGS "${MPI_COMPILE_FLAGS}")
+  set_target_properties(sieve4 PROPERTIES
+    COMPILE_FLAGS "${MPI_COMPILE_FLAGS}")
+  set_target_properties(sieve5 PROPERTIES
+    COMPILE_FLAGS "${MPI_COMPILE_FLAGS}")
+  set_target_properties(sieve6 PROPERTIES
     COMPILE_FLAGS "${MPI_COMPILE_FLAGS}")
 endif()
 
@@ -38,5 +50,11 @@ if(MPI_LINK_FLAGS)
   set_target_properties(sieve2 PROPERTIES
     LINK_FLAGS "${MPI_LINK_FLAGS}")
   set_target_properties(sieve3 PROPERTIES
+    LINK_FLAGS "${MPI_LINK_FLAGS}")
+  set_target_properties(sieve4 PROPERTIES
+    LINK_FLAGS "${MPI_LINK_FLAGS}")
+  set_target_properties(sieve5 PROPERTIES
+    LINK_FLAGS "${MPI_LINK_FLAGS}")
+  set_target_properties(sieve6 PROPERTIES
     LINK_FLAGS "${MPI_LINK_FLAGS}")
 endif()

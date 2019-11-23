@@ -62,8 +62,8 @@ int main (int argc, char *argv[])
 
    // odd list
    // if even, removing it; if odd, keeping it
-   low_value += (low_value + 1) % 2; // -> 
-   high_value -= (high_value + 1) % 2; // <- 
+   low_value += (low_value + 1)&1; // -> 
+   high_value -= (high_value + 1)&1; // <- 
 
    // size is odd number
    size = (high_value - low_value)/2 + 1;
@@ -109,7 +109,7 @@ int main (int argc, char *argv[])
          if (!(low_value%prime)) 
             first = 0;
          else 
-            first = (prime * ((low_value%prime)&1 + 1) - low_value%prime) >> 1; 
+            first = (prime * ((low_value/prime)&1 + 1) - low_value%prime) >> 1; 
       }
       for (i = first; i < size; i += prime) 
          marked[i] = 1; 

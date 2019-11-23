@@ -135,7 +135,7 @@ int main (int argc, char *argv[])
             if (block_low_value%prime == 0) 
                first = 0; 
             else 
-               first = (prime * ((low_value%prime)&1 + 1) - low_value%prime) >> 1;
+               first = (prime * ((low_value/prime)&1 + 1) - low_value%prime) >> 1;
          }
          for (i = first + (block_low_value - low_value)/2; i <= (block_high_value - low_value)/2; i += prime)
             marked[i] = 1; 

@@ -21,7 +21,7 @@ int main (int argc, char *argv[])
    unsigned long int    proc0_size;   /* Size of proc 0's subarray */
    unsigned long int    prime;        /* Current prime */
    unsigned long int    size;         /* Elements in 'marked' */
-
+ 
 
    MPI_Init (&argc, &argv);
 
@@ -50,8 +50,8 @@ int main (int argc, char *argv[])
 
    // odd list
    // if even, removing it; if odd, keeping it
-   low_value += (low_value + 1) % 2; // -> 
-   high_value -= (high_value + 1) % 2; // <- 
+   low_value += (low_value+1)&1; // -> 
+   high_value -= (high_value+1)&1; // <- 
 
    // size is odd number
    size = (high_value - low_value)/2 + 1;
@@ -93,10 +93,10 @@ int main (int argc, char *argv[])
          // [(p - low%p) + (p - low%p)%2*p]/2
          // (p - low%p) and p is odd -> low%p is even; low is odd, odd/odd is oddd
          // [(p - low%p) + p*(low%p)&1] >> 1
-         // 1 [p*((low%p)&1+1) - low%p]>>1
+         // 1 [p*((low%p+1)&1+1) - low%p]>>1
          // [p - low%p + (low/p+1)&1*p]>>1
-         // 2 [p*((low/p+1)&1+1) - low%p]>>1
-         else first = (prime * ((low_value%prime)&1 + 1) - low_value%prime) >> 1; // cannot be divided 
+         // 2 [p*((low/p)&1+1) - low%p]>>1
+         else first = (prime * ((low_value/prime)&1 + 1) - low_value%prime) >> 1; // cannot be divided 
       }
       // mark all that prime list
       for (i = first; i < size; i += prime) marked[i] = 1;

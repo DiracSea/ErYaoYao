@@ -14,139 +14,158 @@
 #define BLOCK_LOW(id, p, n) ((id) * (n) / (p))
 #define BLOCK_HIGH(id, p, n) (BLOCK_LOW((id)+1, p, n) - 1)
 
-int main(int argc, char **argv)
+int main (int argc, char *argv[])
 {
-    double elapsedTime;
-    int pid;
-    int psize;
-    unsigned long long int n;
-    unsigned long long int low_value, high_value;
-    unsigned long long int size, proc0_size;
-    char *marked;
-    unsigned long long int i, index, first;
-    unsigned long long int prime;
-    unsigned long long int count, global_count;
-    unsigned long long int local_first, local_prime, local_size;
-    char *local_marked;
+   unsigned long int    count;        /* Local prime count */
+   double elapsed_time; /* Parallel execution time */
+   unsigned long int    first;        /* Index of first multiple */
+   int   local_first;
+   unsigned long int    global_count = 0; /* Global prime count */
+   unsigned long long int    high_value;   /* Highest value on this proc */
+   unsigned long int    i;
+   int    id;           /* Process ID number */
+   unsigned long int    index;        /* Index of current prime */
+   unsigned long long int    low_value;    /* Lowest value on this proc */
+   char  *marked;       /* Portion of 2,...,'n' */
+   char  *local_prime_marked;
+   unsigned long long int    n;            /* Sieving from 2, ..., 'n' */
+   int    p;            /* Number of processes */
+   unsigned long int    proc0_size;   /* Size of proc 0's subarray */
+   unsigned long int    prime;
+   unsigned long int  local_prime;        /* Current prime */
+   unsigned long int    size;         /* Elements in 'marked' */
+   unsigned long int  local_prime_size;
 
-    /**
-     * Initialize MPI
-     */
-    MPI_Init(&argc, &argv);
-    MPI_Barrier(MPI_COMM_WORLD);
-    elapsedTime = -MPI_Wtime();
-    MPI_Comm_rank(MPI_COMM_WORLD, &pid);
-    MPI_Comm_size(MPI_COMM_WORLD, &psize);
-    if (argc != 2)
-    {
-        if (pid == 0)
-            printf("Command line syntax error.\n");
-        MPI_Finalize();
-        exit(1);
-    }
+   unsigned long int block_size; 
+   unsigned long long int block_low_value; 
+   unsigned long long int block_high_value; 
 
-    /**
-     * Parameters Initialization
-     */
-    n = atoll(argv[1]);
-    low_value = 2 + BLOCK_LOW(pid, psize, n-1);
-    high_value = 2 + BLOCK_HIGH(pid, psize, n-1);
-    // size = BLOCK_SIZE(pid, psize, n-1);
-    low_value = low_value + (low_value + 1) % 2;
-    high_value = high_value - (high_value + 1) % 2;
-    size = (high_value - low_value) / 2 + 1;
-    local_size  = (int)sqrt((double)(n)) - 1;
-    
-    /**
-     * process 0 must holds all primes used
-     */
-    proc0_size = (n/2 - 1) / psize;
-    if ((2 + proc0_size) < (int) sqrt((double) n/2))
-    {
-        if (pid == 0)
-            printf("Too many processes.\n");
-        MPI_Finalize();
-        exit(1);
-    }
 
-    /**
-     * Allocation
-     */
-    marked = (char*) malloc(size);
-    local_marked = (char *) malloc (local_size);
-    if (marked == NULL || local_marked == NULL)
-    {
-        printf("PID: %d - Cannot allocate enough memory.\n", pid);
-        MPI_Finalize();
-        exit(1);
-    }
+   MPI_Init (&argc, &argv);
 
-    /**
-     * Core Function
-     */
-    local_prime = 2;
-    for (i = 0; i < local_size; i++)
-        local_marked[i] = 0;
-    index = 0;
-    do
-    {
-        local_first = local_prime * local_prime - 2;
-        for (i = local_first; i < local_size; i += local_prime)
-            local_marked[i] = 1;
-        while (local_marked[++index] == 1);
-        local_prime = 2 + index;
-    } while (local_prime * local_prime <= n);
-    
+   /* Start the timer */
 
-    for (i = 0; i < size; i++)
-        marked[i] = 0;
+   MPI_Comm_rank (MPI_COMM_WORLD, &id);
+   MPI_Comm_size (MPI_COMM_WORLD, &p);
+   MPI_Barrier(MPI_COMM_WORLD);
+   elapsed_time = -MPI_Wtime();
 
-    unsigned long int block_size = 1048576;
-    // unsigned long int block_size = 2;
-    unsigned long long int block_low_value = low_value;
-    unsigned long long int block_high_value = block_low_value + 2 * (block_size - 1);
-    
-    do
-    {
-        index = 0;
-        prime = 3;
-        while (prime * prime <= block_high_value)
-        {
-            if (prime * prime > block_low_value)
-                first = (prime * prime - block_low_value) / 2;
-            else
-            {
-                if ((block_low_value % prime) == 0)
-                    first = 0;
-                else
-                    first = (prime - (block_low_value % prime) + block_low_value / prime % 2 * prime) / 2;
-            }
-            for (i = first + (block_low_value - low_value) / 2; i <= (block_high_value - low_value) / 2; i += prime)
-                marked[i] = 1;
-            while(local_marked[++index] == 1);
-            prime = index + 2;
-        }
-        block_low_value = block_high_value + 2;
-        block_high_value = block_low_value + 2 * (block_size - 1);
-        if (block_high_value > high_value)
-            block_high_value = high_value;
-    } while (block_low_value <= high_value);
-    count = 0;
-    for (i = 0; i < size; i++)
-        if (marked[i] == 0)
-            count++;
-    if (pid == 0)
-        count++;    // 2
-    if (psize > 1)
-        MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
-    
-    elapsedTime += MPI_Wtime();
+   if (argc != 2) {
+      if (!id) printf ("Command line: %s <m>\n", argv[0]);
+      MPI_Finalize();
+      exit (1);
+   }
 
-    /**
-     * Print the results
-     */
-    if (pid == 0)
-        printf("The total number of primes: %lld, time: %.6lf s in %d processes.\n", global_count, elapsedTime, psize);
-    MPI_Finalize();
-    return 0;
+   n = atoll(argv[1]);
+
+   /* Figure out this process's share of the array, as
+      well as the integers represented by the first and
+      last array elements */
+
+   /* Add you code here  */
+   // common list
+   low_value = 2 + id * (n - 1) / p;
+   high_value = low_value + (n - 1)/p - 1; 
+
+   // odd list
+   // if even, removing it; if odd, keeping it
+   low_value += (low_value+1)&1; // -> 
+   high_value -= (high_value+1)&1; // <- 
+
+   // size is odd number
+   size = (high_value - low_value)/2 + 1;
+   local_prime_size = (int)sqrt((double)(n)) - 1; 
+
+   /* Bail out if all the primes used for sieving are
+      not all held by process 0 */
+   proc0_size = (n/2 - 1) / p;
+   if ((2 + proc0_size) < (int) sqrt((double) n/2)) {
+      if (!id) printf("Too many processors.\n"); 
+      MPI_Finalize(); 
+      exit(1); 
+   }
+
+   // Allocate array for global prime and local prime 
+   marked = (char *) malloc(size); 
+   local_prime_marked = (char *) malloc(local_prime_size); 
+
+   if (marked == NULL || local_prime_marked == NULL) {
+      printf("Cannot allocate enough memory to processor - %d.\n", id); 
+      MPI_Finalize();
+      exit(1); 
+   }
+
+   // mark basic primes
+   local_prime = 2; index = 0; 
+   for (i = 0; i < local_prime_size; i++) 
+      local_prime_marked[i] = 0; 
+   
+   do {
+      local_first = local_prime * local_prime - 2; 
+      for (i = local_first; i < local_prime_size; i += local_prime) 
+         local_prime_marked[i] = 1; 
+      while (local_prime_marked[++index]); 
+      local_prime = 2 + index; 
+   } while (local_prime * local_prime <= n); 
+
+   for (i = 0; i < size; i++) marked[i] = 0; 
+
+   // block 
+   // break the sequence into block, test basic primes seperately
+   // 10^5: 9,592	primes; max 99991
+   /*
+   * [lsu018@tardis ~]$ lscpu | grep "cache" 
+   *   L1d cache:             16K
+   *   L1i cache:             64K
+   *   L2 cache:              2048K
+   *   L3 cache:              6144K
+   */
+   // 1: 2048K 
+   // 2: 8192K
+   // cache_alignment 64B
+   // long long 8B
+   block_size = 5000; 
+   block_low_value = low_value; 
+   block_high_value = block_low_value + 2*(block_size - 1); 
+
+   // each block test seperately
+   do {
+      index = 0; prime = 3; 
+      while (prime*prime <= block_high_value) {
+         if (prime*prime > block_low_value) 
+            first = (prime*prime - block_low_value)/2; 
+         else {
+            if (!(block_low_value%prime))
+               first = 0; 
+            else first = (prime * (((block_low_value/prime)&1) + 1) - (block_low_value%prime))>>1; // cannot be divided 
+         }
+         for (i = first + (block_low_value - low_value)/2; i <= (block_high_value - low_value)/2; i += prime)
+            marked[i] = 1; 
+         while (local_prime_marked[++index]); 
+         prime = index + 2; 
+      }
+      block_low_value = block_high_value + 2; 
+      block_high_value = block_low_value + 2*(block_size - 1); 
+      if (block_high_value > high_value) block_high_value = high_value; 
+   } while (block_low_value <= high_value); 
+
+   // count prime numbers
+   count = 0; 
+   for (i = 0; i < size; i++) 
+      if (!marked[i]) 
+         count++; 
+   if (!id) count++; // 2
+   if (p > 1) 
+      MPI_Reduce(&count, &global_count, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD); 
+   
+   elapsed_time += MPI_Wtime();
+   /* Print the results */
+
+   if (!id) {
+      printf("The total number of prime: %ld, total time: %10.6f, total node %d\n", global_count, elapsed_time, p);
+
+   }
+   MPI_Finalize ();
+   return 0;
 }
+

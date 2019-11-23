@@ -55,7 +55,7 @@ int main (int argc, char *argv[])
    high_value -= (high_value+1)&1; // <- 
 
    // size is odd number
-   size = (high_value - low_value)>>1 + 1;
+   size = (high_value - low_value)/2 + 1;
 
    /* Bail out if all the primes used for sieving are
       not all held by process 0 */

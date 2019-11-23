@@ -285,7 +285,8 @@ int mydgetrf_block(double *A, int *ipiv, int n, int b)
         for (i = i_block; i < i_block+b && i < n; i++)
         {
             // pivoting
-            maxIdx = i;
+            maxIdx = i; 
+
             // max value in a row
             max = fabs(A[i*n + i]);
             
@@ -359,7 +360,7 @@ int mydgetrf_block(double *A, int *ipiv, int n, int b)
         // kij ijk i_block+b
         for (i = i_block+b; i < n; i += b)
         {
-            for (j = i_block+b; j < n; j += b)
+            for (j = i_block+b; j < n; j += b) 
             {
                 // mydgemm(double *a, double *b, double *c, int n, int i, int j, int k, int blocksize)
                 mydgemm(A, A, A, n, i, j, i_block, b);

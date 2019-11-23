@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-alpha/dist/katex.min.css" integrity="sha384-BTL0nVi8DnMrNdMQZG1Ww6yasK9ZGnUxL1ZWukXQ7fygA1py52yPp9W4wrR00VML" crossorigin="anonymous">
+        <style>
+/*--------------------------------------------------------------------------------------------- * Copyright (c) Microsoft Corporation. All rights reserved. * Licensed under the MIT License. See License.txt in the project root for license information. *--------------------------------------------------------------------------------------------*/ body { font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback"; font-size: 14px; padding: 0 26px; line-height: 22px; word-wrap: break-word; } #code-csp-warning { position: fixed; top: 0; right: 0; color: white; margin: 16px; text-align: center; font-size: 12px; font-family: sans-serif; background-color:#444444; cursor: pointer; padding: 6px; box-shadow: 1px 1px 1px rgba(0,0,0,.25); } #code-csp-warning:hover { text-decoration: none; background-color:#007acc; box-shadow: 2px 2px 2px rgba(0,0,0,.25); } body.scrollBeyondLastLine { margin-bottom: calc(100vh - 22px); } body.showEditorSelection .code-line { position: relative; } body.showEditorSelection .code-active-line:before, body.showEditorSelection .code-line:hover:before { content: ""; display: block; position: absolute; top: 0; left: -12px; height: 100%; } body.showEditorSelection li.code-active-line:before, body.showEditorSelection li.code-line:hover:before { left: -30px; } .vscode-light.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(0, 0, 0, 0.15); } .vscode-light.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(0, 0, 0, 0.40); } .vscode-light.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-dark.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 255, 255, 0.4); } .vscode-dark.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 255, 255, 0.60); } .vscode-dark.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-high-contrast.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 160, 0, 0.7); } .vscode-high-contrast.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 160, 0, 1); } .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before { border-left: none; } img { max-width: 100%; max-height: 100%; } a { text-decoration: none; } a:hover { text-decoration: underline; } a:focus, input:focus, select:focus, textarea:focus { outline: 1px solid -webkit-focus-ring-color; outline-offset: -1px; } hr { border: 0; height: 2px; border-bottom: 2px solid; } h1 { padding-bottom: 0.3em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; } h1, h2, h3 { font-weight: normal; } h1 code, h2 code, h3 code, h4 code, h5 code, h6 code { font-size: inherit; line-height: auto; } table { border-collapse: collapse; } table > thead > tr > th { text-align: left; border-bottom: 1px solid; } table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td { padding: 5px 10px; } table > tbody > tr + tr > td { border-top: 1px solid; } blockquote { margin: 0 7px 0 5px; padding: 0 16px 0 10px; border-left-width: 5px; border-left-style: solid; } code { font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback"; font-size: 14px; line-height: 19px; } body.wordWrap pre { white-space: pre-wrap; } .mac code { font-size: 12px; line-height: 18px; } pre:not(.hljs), pre.hljs code > div { padding: 16px; border-radius: 3px; overflow: auto; } /** Theming */ pre code { color: var(--vscode-editor-foreground); } .vscode-light pre:not(.hljs), .vscode-light code > div { background-color: rgba(220, 220, 220, 0.4); } .vscode-dark pre:not(.hljs), .vscode-dark code > div { background-color: rgba(10, 10, 10, 0.4); } .vscode-high-contrast pre:not(.hljs), .vscode-high-contrast code > div { background-color: rgb(0, 0, 0); } .vscode-high-contrast h1 { border-color: rgb(0, 0, 0); } .vscode-light table > thead > tr > th { border-color: rgba(0, 0, 0, 0.69); } .vscode-dark table > thead > tr > th { border-color: rgba(255, 255, 255, 0.69); } .vscode-light h1, .vscode-light hr, .vscode-light table > tbody > tr + tr > td { border-color: rgba(0, 0, 0, 0.18); } .vscode-dark h1, .vscode-dark hr, .vscode-dark table > tbody > tr + tr > td { border-color: rgba(255, 255, 255, 0.18); } 
+</style>
+<style>
+/* Tomorrow Theme */ /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */ /* Original theme - https://github.com/chriskempson/tomorrow-theme */ /* Tomorrow Comment */ .hljs-comment, .hljs-quote { color: #8e908c; } /* Tomorrow Red */ .hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion { color: #c82829; } /* Tomorrow Orange */ .hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link { color: #f5871f; } /* Tomorrow Yellow */ .hljs-attribute { color: #eab700; } /* Tomorrow Green */ .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition { color: #718c00; } /* Tomorrow Blue */ .hljs-title, .hljs-section { color: #4271ae; } /* Tomorrow Purple */ .hljs-keyword, .hljs-selector-tag { color: #8959a8; } .hljs { display: block; overflow-x: auto; color: #4d4d4c; padding: 0.5em; } .hljs-emphasis { font-style: italic; } .hljs-strong { font-weight: bold; }
+</style>
+<style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+<li><a href="#cs211-project2"><strong>CS211 Project2</strong></a>
+<ul>
+<li><a href="#high-performance-sequential-codes-for-solving-large-linear-systems"><strong>High Performance Sequential Codes for Solving Large Linear Systems</strong></a>
+<ul>
+<li><a href="#part-1"><em><strong>Part #1</strong></em></a>
+<ul>
+<li><a href="#1-symbols"><strong>1. Symbols</strong></a></li>
+<li><a href="#2-code"><strong>2. Code</strong></a></li>
+<li><a href="#3-calculation"><strong>3. Calculation</strong></a></li>
+<li><a href="#4-performance"><strong>4. Performance</strong></a></li>
+</ul>
+</li>
+<li><a href="#part-2"><em><strong>Part #2</strong></em></a>
+<ul>
+<li><a href="#1-code-design"><strong>1. Code Design</strong></a></li>
+<li><a href="#2-code-1"><strong>2. Code</strong></a></li>
+<li><a href="#3-performance"><strong>3. Performance</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<center> 
+<h1 id="cs211-project2"><strong>CS211 Project2</strong></h1>
+<p>Name: Longze Su</p>
+<p>SID: 862188702</p>
+<h2 id="high-performance-sequential-codes-for-solving-large-linear-systems"><strong>High Performance Sequential Codes for Solving Large Linear Systems</strong></h2>
+<h3 id="part-1"><em><strong>Part #1</strong></em></h3>
+</center> 
+<h4 id="1-symbols"><strong>1. Symbols</strong></h4>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Unit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Op</td>
+<td>Flops</td>
+<td>double float-point operations</td>
+</tr>
+<tr>
+<td>P</td>
+<td>GFlops</td>
+<td>performance</td>
+</tr>
+<tr>
+<td>T</td>
+<td>s</td>
+<td>time</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-code"><strong>2. Code</strong></h4>
+<ul>
+<li><em>This is mydgetrf</em></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">mydgetrf</span><span class="hljs-params">(<span class="hljs-keyword">double</span> *A, <span class="hljs-keyword">int</span> *ipiv, <span class="hljs-keyword">int</span> n)</span> 
+</span>{
+    <span class="hljs-keyword">int</span> i, t, maxIdx; 
+    <span class="hljs-keyword">double</span> maxV; <span class="hljs-comment">// tmpR; </span>
+    <span class="hljs-keyword">double</span> *tmpR = (<span class="hljs-keyword">double</span>*) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">double</span>) * n); 
+
+    <span class="hljs-comment">// ipiv = idx of pivot\</span>
+    <span class="hljs-comment">// pivoting</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++) 
+    {
+        maxIdx = i; maxV = <span class="hljs-built_in">fabs</span>(A[i*n + i]); 
+
+        <span class="hljs-keyword">for</span> (t = i+<span class="hljs-number">1</span>; t &lt; n; t++) 
+        {
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">fabs</span>(A[t*n + i]) &gt; maxV) 
+            {
+                maxIdx = t; maxV = <span class="hljs-built_in">fabs</span>(A[t*n + i]); 
+            } 
+        }
+        <span class="hljs-keyword">if</span> (maxV == <span class="hljs-number">0</span>) 
+        {
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"A is singular, Terminated.\n"</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>; 
+        }
+        <span class="hljs-keyword">else</span> 
+        {
+            <span class="hljs-keyword">if</span> (maxIdx != i) <span class="hljs-comment">// pivoting</span>
+            {
+                <span class="hljs-comment">// save pivot</span>
+                <span class="hljs-keyword">int</span> tmp = ipiv[i]; 
+                ipiv[i] = ipiv[maxIdx]; 
+                ipiv[maxIdx] = tmp; 
+
+                <span class="hljs-comment">// swap</span>
+                <span class="hljs-comment">// memcpy quicker</span>
+                <span class="hljs-built_in">memcpy</span>(tmpR, A + i*n, n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">double</span>));
+                <span class="hljs-built_in">memcpy</span>(A + i*n, A + maxIdx*n, n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">double</span>));
+                <span class="hljs-built_in">memcpy</span>(A + maxIdx*n, tmpR, n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">double</span>));
+                
+            }
+        }
+
+        <span class="hljs-comment">// factorization</span>
+        <span class="hljs-keyword">int</span> j; 
+        <span class="hljs-keyword">for</span> (j = i+<span class="hljs-number">1</span>; j &lt; n; j++) 
+        {
+            A[j*n + i] = A[j*n + i]/A[i*n + i]; 
+            <span class="hljs-keyword">int</span> k; 
+            <span class="hljs-keyword">for</span> (k = i+<span class="hljs-number">1</span>; k &lt; n; k++)
+            {
+                A[j*n + k] -= A[j*n + i] * A[i*n + k]; 
+            }
+        }
+    }
+    <span class="hljs-built_in">free</span>(tmpR); 
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<ul>
+<li><em>This is mydtrsv</em></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mydtrsv</span><span class="hljs-params">(<span class="hljs-keyword">char</span> UPLO, <span class="hljs-keyword">double</span> *A, <span class="hljs-keyword">double</span> *B, <span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> *ipiv)</span>
+</span>{
+    <span class="hljs-comment">// UPLO = 'L' or 'U' </span>
+    <span class="hljs-keyword">double</span> *y = (<span class="hljs-keyword">double</span>*) <span class="hljs-built_in">malloc</span>(n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">double</span>)); 
+    <span class="hljs-comment">// set 0</span>
+    <span class="hljs-built_in">memset</span>(y, <span class="hljs-number">0.0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">double</span>)); 
+
+    <span class="hljs-keyword">double</span> sum; 
+    <span class="hljs-keyword">int</span> i, j; 
+
+    <span class="hljs-keyword">if</span> (UPLO == <span class="hljs-string">'L'</span>) 
+    {
+        y[<span class="hljs-number">0</span>] = B[ipiv[<span class="hljs-number">0</span>]]; 
+        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt; n; i++) 
+        {
+            sum = <span class="hljs-number">0.0</span>; 
+            <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; i; j++) 
+            {
+                sum += y[j] * A[i*n + j];
+            }
+            y[i] = B[ipiv[i]] - sum;
+        }
+    }
+
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (UPLO == <span class="hljs-string">'U'</span>) 
+    {
+        y[n - <span class="hljs-number">1</span>] = B[n - <span class="hljs-number">1</span>] / A[(n<span class="hljs-number">-1</span>)*n + n<span class="hljs-number">-1</span>];
+        <span class="hljs-keyword">for</span> (i = n<span class="hljs-number">-2</span>; i &gt;= <span class="hljs-number">0</span>; i--)
+        {
+            sum = <span class="hljs-number">0.0</span>;
+            <span class="hljs-keyword">for</span> (j = i+<span class="hljs-number">1</span>; j &lt; n; j++)
+            {
+                sum += y[j] * A[i*n + j];
+            }
+            y[i] = (B[i] - sum) / A[i*n + i];
+        }
+    }
+
+    <span class="hljs-built_in">memcpy</span>(B, y, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">double</span>)*n); 
+    <span class="hljs-built_in">free</span>(y); 
+    <span class="hljs-keyword">return</span>;
+}
+
+</div></code></pre>
+<h4 id="3-calculation"><strong>3. Calculation</strong></h4>
+<p>To calculate the Performance of the algorithm, we should not only know the running time of our programs, but also need to know the total double floating-point operations. Because</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo>=</mo><mi>t</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi><mi>O</mi><mi>p</mi><mi mathvariant="normal">/</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">P = totalOp/t 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">t</span><span class="mord mathit">o</span><span class="mord mathit">t</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord mathit">p</span><span class="mord">/</span><span class="mord mathit">t</span></span></span></span></span></p>
+<p>We know the algorithm of GE is composed of three parts:</p>
+<p>Factorization <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>=</mo><mi>L</mi><mo>∗</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">A=L*U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathit">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathit">L</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathit" style="margin-right:0.10903em;">U</span></span></span></span>, Solve <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mo>∗</mo><mi>y</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">L*y=b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathit">L</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathit">b</span></span></span></span> and Solve <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>U</mi><mo>∗</mo><mi>x</mi><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">U*x=y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathit" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathit">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span></span></p>
+<p>For the factorization, the calculation is like</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>:</mo><mi>n</mi><mo separator="true">,</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>:</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>A</mi><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>:</mo><mi>n</mi><mo separator="true">,</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>:</mo><mi>n</mi><mo>)</mo><mo>−</mo><mi>A</mi><mo>(</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>:</mo><mi>n</mi><mo separator="true">,</mo><mi>i</mi><mo>)</mo><mo>∗</mo><mi>A</mi><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>:</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">A(i+1:n,i+1:n) = A(i+1:n , i+1:n) - A(i+1:n, i) * A(i, i+1:n)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">A</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathit">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">A</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathit">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">A</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">A</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span></span></p>
+<p>There are one minus and one multiple, totally two double floating arithmetic operations.</p>
+<p>To calculate its Op, we have:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>O</mi><mi>p</mi><mo>=</mo><mn>2</mn><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mn>2</mn><mo>∗</mo><mfrac><mrow><mi>n</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>(</mo><mn>2</mn><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><mn>6</mn></mfrac><mo>≈</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><msup><mi>n</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">factOp = 2\sum_{i=1}^{n} i^2=2*\frac{n(n-1)(2n-1)}{6}\approx\frac{2}{3}n^3 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mord mathit">a</span><span class="mord mathit">c</span><span class="mord mathit">t</span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord mathit">p</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">i</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">6</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathit">n</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathit">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.00744em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>The <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mo>∗</mo><mi>y</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">L*y=b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathit">L</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathit">b</span></span></span></span> have equation:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><mi>m</mi><mo>+</mo><mo>=</mo><mi>y</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo>∗</mo><mi>A</mi><mo>[</mo><mi>i</mi><mo>∗</mo><mi>n</mi><mo>+</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">sum += y[j] * A[i*n + j] 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathit">s</span><span class="mord mathit">u</span><span class="mord mathit">m</span><span class="mord">+</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">A</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathit">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span></span></p>
+<p>Also have two double floating arithmetic operations.</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><msub><mi>p</mi><mi>L</mi></msub><mo>=</mo><mn>2</mn><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></munderover><mi>i</mi><mo>=</mo><mn>2</mn><mo>∗</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mi>n</mi><mo>≈</mo><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">Op_L = 2\sum_{i=1}^{n-1} i=2*\frac{1}{2}(n-1)n\approx n^2 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord"><span class="mord mathit">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.0787820000000004em;vertical-align:-1.277669em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8011130000000004em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.300005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.00744em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord mathit">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>The <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>U</mi><mo>∗</mo><mi>x</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">U*x=b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathit" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathit">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathit">b</span></span></span></span> also have equation:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>u</mi><mi>m</mi><mo>+</mo><mo>=</mo><mi>y</mi><mo>[</mo><mi>j</mi><mo>]</mo><mo>∗</mo><mi>A</mi><mo>[</mo><mi>i</mi><mo>∗</mo><mi>n</mi><mo>+</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">sum += y[j] * A[i*n + j] 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathit">s</span><span class="mord mathit">u</span><span class="mord mathit">m</span><span class="mord">+</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">A</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathit">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span></span></p>
+<p>It has two double floating arithmetic operations.</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><msub><mi>p</mi><mi>U</mi></msub><mo>=</mo><mn>2</mn><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mi>i</mi><mo>=</mo><mn>2</mn><mo>∗</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>n</mi><mo>(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>≈</mo><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">Op_U = 2\sum_{i=1}^{n} i=2*\frac{1}{2}n(n+1)\approx n^2 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord"><span class="mord mathit">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.10903em;">U</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.00744em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathit">n</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>As a result, the total operation is:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi><mi>O</mi><mi>p</mi><mo>=</mo><mi>f</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>O</mi><mi>p</mi><mo>+</mo><mi>O</mi><msub><mi>p</mi><mi>L</mi></msub><mo>+</mo><mi>O</mi><msub><mi>p</mi><mi>U</mi></msub><mo>=</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><msup><mi>n</mi><mn>3</mn></msup><mo>+</mo><mn>2</mn><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">totalOp=factOp+Op_L+Op_U=\frac{2}{3}n^3+2n^2 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit">t</span><span class="mord mathit">o</span><span class="mord mathit">t</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord mathit">p</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mord mathit">a</span><span class="mord mathit">c</span><span class="mord mathit">t</span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord mathit">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord"><span class="mord mathit">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord"><span class="mord mathit">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.10903em;">U</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.00744em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h4 id="4-performance"><strong>4. Performance</strong></h4>
+<ul>
+<li>Floating point operations</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>1002</th>
+<th>2001</th>
+<th>3000</th>
+<th>4002</th>
+<th>5001</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Op(Flops)</td>
+<td>672,682,680</td>
+<td>5,349,345,336</td>
+<td>18,018,000,000</td>
+<td>42,762,730,680</td>
+<td>83,433,363,336</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Time</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>1002</th>
+<th>2001</th>
+<th>3000</th>
+<th>4002</th>
+<th>5001</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MKL LAPACK(s)</td>
+<td>0.148049</td>
+<td>0.572735</td>
+<td>1.735190</td>
+<td>3.778885</td>
+<td>7.151238</td>
+</tr>
+<tr>
+<td>naive LU(s)</td>
+<td>3.762635</td>
+<td>30.229238</td>
+<td>104.493806</td>
+<td>242.035430</td>
+<td>486.754238</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Peformance</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>1002</th>
+<th>2001</th>
+<th>3000</th>
+<th>4002</th>
+<th>5001</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MKL LAPACK(GFlops)</td>
+<td>4.5436</td>
+<td>9.3400</td>
+<td>10.3839</td>
+<td>11.3162</td>
+<td><font color=#DC143C>11.6670<color></td>
+</tr>
+<tr>
+<td>naive LU(GFlops)</td>
+<td><font color=#DC143C>0.1788<color></td>
+<td>0.1770</td>
+<td>0.1724</td>
+<td>0.1767</td>
+<td>0.1714</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://raw.githubusercontent.com/DiracSea/src/master/211_2_1.png" alt="MKL">
+<img src="https://raw.githubusercontent.com/DiracSea/src/master/211_2_2.png" alt="naive"></p>
+<center> 
+<h3 id="part-2"><em><strong>Part #2</strong></em></h3>
+</center> 
+<h4 id="1-code-design"><strong>1. Code Design</strong></h4>
+<ul>
+<li>
+<p>blocked matrix multiplcation
+Similar to the lab1, execept the order of outer loop is kij, and the element updated in inner loop of C is not plus but minus. <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>(</mo><mi>e</mi><mi>n</mi><mi>d</mi><mo>+</mo><mn>1</mn><mo>:</mo><mi>n</mi><mo separator="true">,</mo><mi>e</mi><mi>n</mi><mi>d</mi><mo>+</mo><mn>1</mn><mo>:</mo><mi>n</mi><mo>)</mo><mo>−</mo><mo>=</mo><mi>A</mi><mo>(</mo><mi>e</mi><mi>n</mi><mi>d</mi><mo>+</mo><mn>1</mn><mo>:</mo><mi>n</mi><mo separator="true">,</mo><mi>i</mi><mi>b</mi><mo>:</mo><mi>e</mi><mi>n</mi><mi>d</mi><mo>)</mo><mo>∗</mo><mi>A</mi><mo>(</mo><mi>i</mi><mi>b</mi><mo>:</mo><mi>e</mi><mi>n</mi><mi>d</mi><mo separator="true">,</mo><mi>e</mi><mi>n</mi><mi>d</mi><mo>+</mo><mn>1</mn><mo>:</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">A(end+1:n, end+1:n) -= A(end+1:n, ib:end)*A(ib:end, end+1:n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">A</span><span class="mopen">(</span><span class="mord mathit">e</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">e</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">A</span><span class="mopen">(</span><span class="mord mathit">e</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">i</span><span class="mord mathit">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">e</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">A</span><span class="mopen">(</span><span class="mord mathit">i</span><span class="mord mathit">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit">e</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit">e</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span></p>
+</li>
+<li>
+<p>mydgetrf_block
+Pivoting is the similar with the naive method. In this case, do pivoting in each block.</p>
+</li>
+</ul>
+<p>Because in naive method, we use BLAS2 to factorize, in this case, we use BLAS3 instead.</p>
+<p>Divide the factorization into two parts. Delayed the update of U matrix.</p>
+<h4 id="2-code"><strong>2. Code</strong></h4>
+<ul>
+<li><em>This is modified block Matrix Mutiplication</em></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mydgemm</span><span class="hljs-params">(<span class="hljs-keyword">double</span> *a, <span class="hljs-keyword">double</span> *b, <span class="hljs-keyword">double</span> *c, <span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> B)</span>
+</span>{
+    <span class="hljs-comment">// cache block</span>
+    <span class="hljs-comment">/* B x B mini matrix multiplications */</span>
+    
+    <span class="hljs-comment">// prevent over boundary </span>
+    <span class="hljs-keyword">int</span> n_i3 = i+B &gt; n ? n:i+B; 
+    <span class="hljs-keyword">int</span> n_j3 = j+B &gt; n ? n:j+B; 
+    <span class="hljs-keyword">int</span> n_k3 = k+B &gt; n ? n:k+B;
+
+    <span class="hljs-comment">// register block</span>
+    <span class="hljs-keyword">for</span> (i1 = i; i1 &lt; n_i3; i1 += <span class="hljs-number">3</span>)
+    {
+        <span class="hljs-keyword">for</span> (j1 = j; j1 &lt; n_j3; j1 += <span class="hljs-number">3</span>)
+        {
+            <span class="hljs-keyword">int</span> n0 = i1*n + j1; 
+            <span class="hljs-keyword">int</span> n1 = n0 + n; 
+            <span class="hljs-keyword">int</span> n2 = n1 + n; 
+
+            <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> c00 = c[n0]; 
+            <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> c01 = c[n0 + <span class="hljs-number">1</span>];
+            <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> c02 = c[n0 + <span class="hljs-number">2</span>];
+            <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> c10 = c[n1]; 
+            <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> c11 = c[n1 + <span class="hljs-number">1</span>];
+            <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> c12 = c[n1 + <span class="hljs-number">2</span>];
+            <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> c20 = c[n2];
+            <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> c21 = c[n2 + <span class="hljs-number">1</span>];
+            <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> c22 = c[n2 + <span class="hljs-number">2</span>];
+
+            <span class="hljs-keyword">for</span> (k1 = k; k1 &lt; n_k3; k1 += <span class="hljs-number">3</span>)
+            {
+
+                <span class="hljs-keyword">for</span> (l = <span class="hljs-number">0</span>; l &lt; <span class="hljs-number">3</span>; l++) 
+                {
+                    <span class="hljs-keyword">int</span> n0a = i1*n + k1 + l; 
+                    <span class="hljs-keyword">int</span> n1a = n0a + n; 
+                    <span class="hljs-keyword">int</span> n2a = n1a + n; 
+                    <span class="hljs-keyword">int</span> n0b = k1*n + j1 + l*n; 
+
+                    <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> a0 = a[n0a];
+                    <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> a1 = a[n1a]; 
+                    <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> a2 = a[n2a]; 
+                    <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> b0 = b[n0b]; 
+                    <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> b1 = b[n0b + <span class="hljs-number">1</span>]; 
+                    <span class="hljs-keyword">register</span> <span class="hljs-keyword">double</span> b2 = b[n0b + <span class="hljs-number">2</span>]; 
+
+                    <span class="hljs-comment">// A(end+1:n, end+1:n) -= A(end+1:n, ib:end)*A(ib:end, end+1:n)    </span>
+
+                    c00 -= a0*b0; 
+                    c01 -= a0*b1; 
+                    c02 -= a0*b2; 
+                    c10 -= a1*b0; 
+                    c11 -= a1*b1; 
+                    c12 -= a1*b2; 
+                    c20 -= a2*b0; 
+                    c21 -= a2*b1; 
+                    c22 -= a2*b2; 
+                }
+            }
+            c[n0] = c00;
+            c[n0 + <span class="hljs-number">1</span>] = c01;
+            c[n0 + <span class="hljs-number">2</span>] = c02;
+            c[n1] = c10;
+            c[n1 + <span class="hljs-number">1</span>] = c11;
+            c[n1 + <span class="hljs-number">2</span>] = c12;
+            c[n2] = c20;
+            c[n2 + <span class="hljs-number">1</span>] = c21;
+            c[n2 + <span class="hljs-number">2</span>] = c22;
+        }
+    }
+    <span class="hljs-keyword">return</span>;
+}
+</div></code></pre>
+<ul>
+<li><em>This is mydetrf_block</em></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">mydgetrf_block</span><span class="hljs-params">(<span class="hljs-keyword">double</span> *A, <span class="hljs-keyword">int</span> *ipiv, <span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> b)</span> 
+</span>{
+    <span class="hljs-keyword">int</span> i_block, i, j, k, maxIdx;
+    <span class="hljs-keyword">double</span> max, sum;
+    <span class="hljs-keyword">double</span> *tmpR = (<span class="hljs-keyword">double</span>*) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">double</span>) * n);
+
+    <span class="hljs-comment">// blocking, blocksize is b</span>
+    <span class="hljs-comment">// process matrix b col at a time</span>
+    <span class="hljs-keyword">for</span> (i_block = <span class="hljs-number">0</span>; i_block &lt; n; i_block += b)
+    {
+        <span class="hljs-comment">// prevent out of bound i &lt; i_block+b</span>
+        <span class="hljs-comment">// the block start point is i </span>
+        <span class="hljs-comment">// BLAS2 version of GEPP to block</span>
+        <span class="hljs-keyword">for</span> (i = i_block; i &lt; i_block+b &amp;&amp; i &lt; n; i++)
+        {
+            <span class="hljs-comment">// pivoting</span>
+            maxIdx = i;
+            <span class="hljs-comment">// max value in a row</span>
+            max = <span class="hljs-built_in">fabs</span>(A[i*n + i]);
+            
+            <span class="hljs-comment">// find pivoting idx</span>
+            <span class="hljs-keyword">for</span> (j = i+<span class="hljs-number">1</span>; j &lt; n; j++)
+            {
+                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">fabs</span>(A[j*n + i]) &gt; max)
+                {
+                    maxIdx = j;
+                    max = <span class="hljs-built_in">fabs</span>(A[j*n + i]);
+                }
+            }
+            <span class="hljs-keyword">if</span> (max == <span class="hljs-number">0</span>)
+            {
+                <span class="hljs-built_in">printf</span>(<span class="hljs-string">"A is singular, Terminated.\n"</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+            }
+            <span class="hljs-keyword">else</span>
+            {
+                <span class="hljs-comment">// begin swap</span>
+                <span class="hljs-keyword">if</span> (maxIdx != i)
+                {
+                    <span class="hljs-comment">// save pivoting </span>
+                    <span class="hljs-keyword">int</span> tmp = ipiv[i];
+                    ipiv[i] = ipiv[maxIdx];
+                    ipiv[maxIdx] = tmp;
+                    
+                    <span class="hljs-comment">// swap rows</span>
+                    <span class="hljs-built_in">memcpy</span>(tmpR, A + i*n, n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">double</span>));
+                    <span class="hljs-built_in">memcpy</span>(A + i*n, A + maxIdx*n, n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">double</span>));
+                    <span class="hljs-built_in">memcpy</span>(A + maxIdx*n, tmpR, n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">double</span>));
+                }
+            }
+
+            <span class="hljs-comment">// factorization of block</span>
+            <span class="hljs-comment">// get A(i_block:n, i_block:i_block+b) = P*L*U</span>
+            <span class="hljs-comment">// delay update</span>
+            <span class="hljs-comment">// i = i_block:i_block+b</span>
+
+            <span class="hljs-keyword">for</span> (j = i+<span class="hljs-number">1</span>; j &lt; n; j++)
+            {
+                A[j*n + i] = A[j*n + i] / A[i*n + i]; <span class="hljs-comment">// store multiple coefficiency</span>
+                
+                <span class="hljs-keyword">int</span> k;
+                <span class="hljs-keyword">for</span> (k = i+<span class="hljs-number">1</span>; k &lt; i_block+b &amp;&amp; k &lt; n; k++) 
+                {
+                    A[j*n + k] -= A[j*n +i] * A[i*n + k]; <span class="hljs-comment">// get naive U</span>
+                }
+            }
+        }
+
+        <span class="hljs-comment">// BLAS3 </span>
+
+        <span class="hljs-comment">// update next b rows of U</span>
+        <span class="hljs-comment">// A(ib:end, end+1:n) = L*L-1*A(ib:end, end+1:n)</span>
+        <span class="hljs-keyword">for</span> (i = i_block; i &lt; i_block+b &amp;&amp; i &lt; n; i++)
+        {
+            <span class="hljs-keyword">for</span> (j = i_block+b; j &lt; n; j++)
+            {
+                sum = <span class="hljs-number">0.0</span>;
+                <span class="hljs-keyword">for</span> (k = i_block; k &lt; i; k++)
+                {
+                    sum += A[i*n + k] * A[k*n + j];
+                }
+                A[i*n + j] -= sum; <span class="hljs-comment">// update U</span>
+            }
+        }
+
+        <span class="hljs-comment">// update A(end+1:n, end+1:n)</span>
+        <span class="hljs-comment">// apply delayed updates with MM with inner dimension b</span>
+        <span class="hljs-comment">// kij ijk i_block+b</span>
+        <span class="hljs-keyword">for</span> (i = i_block+b; i &lt; n; i += b)
+        {
+            <span class="hljs-keyword">for</span> (j = i_block+b; j &lt; n; j += b)
+            {
+                <span class="hljs-comment">// mydgemm(double *a, double *b, double *c, int n, int i, int j, int k, int blocksize)</span>
+                mydgemm(A, A, A, n, i, j, i_block, b);
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h4 id="3-performance"><strong>3. Performance</strong></h4>
+<p>The total operation is:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi><mi>O</mi><mi>p</mi><mo>=</mo><mi>f</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>O</mi><mi>p</mi><mo>+</mo><mi>O</mi><msub><mi>p</mi><mi>L</mi></msub><mo>+</mo><mi>O</mi><msub><mi>p</mi><mi>U</mi></msub><mo>=</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><msup><mi>n</mi><mn>3</mn></msup><mo>+</mo><mn>2</mn><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">totalOp=factOp+Op_L+Op_U=\frac{2}{3}n^3+2n^2 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit">t</span><span class="mord mathit">o</span><span class="mord mathit">t</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord mathit">p</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mord mathit">a</span><span class="mord mathit">c</span><span class="mord mathit">t</span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord mathit">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord"><span class="mord mathit">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mord"><span class="mord mathit">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.10903em;">U</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.00744em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathit">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>Floating point operations</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>1002</th>
+<th>2001</th>
+<th>3000</th>
+<th>4002</th>
+<th>5001</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Op(Flops)</td>
+<td>672,682,680</td>
+<td>5,349,345,336</td>
+<td>18,018,000,000</td>
+<td>42,762,730,680</td>
+<td>83,433,363,336</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Time</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>1002</th>
+<th>2001</th>
+<th>3000</th>
+<th>4002</th>
+<th>5001</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>block LU(s)</td>
+<td>1.510022</td>
+<td>10.156972</td>
+<td>32.807879</td>
+<td>74.948826</td>
+<td>142.978749</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Peformance</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>1002</th>
+<th>2001</th>
+<th>3000</th>
+<th>4002</th>
+<th>5001</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>block LU(GFlops)</td>
+<td>0.4455</td>
+<td>0.5267</td>
+<td>0.5492</td>
+<td>0.5706</td>
+<td><font color=#DC143C>0.5835<font></td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://raw.githubusercontent.com/DiracSea/src/master/211_2_3.png" alt="block"></p>
+
+    </body>
+    </html>

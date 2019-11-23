@@ -6,43 +6,43 @@
  * @LastEditors: Longze Su
  -->
 - [**CS211 Project1**](#cs211-project1)
-    - [**I. Register Reuse**](#i-register-reuse)
-        - [***Part #1***](#part-1)
-            - [**1. Symbols**](#1-symbols)
-            - [**2. Calculation**](#2-calculation)
-            - [**3. Performance**](#3-performance)
-                - [**Calculations**](#calculations)
-            - [**4.Results**](#4results)
-        - [***Part #2***](#part-2)
-            - [**1. Code**](#1-code)
-            - [**2. Calculations**](#2-calculations)
-            - [**3. Performance**](#3-performance-1)
-        - [***Part #3***](#part-3)
-            - [**1. Analysis**](#1-analysis)
-            - [**2. Code**](#2-code)
-            - [**3. Calculations**](#3-calculations)
-            - [**4. Performance**](#4-performance)
-    - [**II. Cache Reuse**](#ii-cache-reuse)
-        - [***Part #1***](#part-1-1)
-            - [**1. Symbols**](#1-symbols-1)
-            - [**2. Calculation**](#2-calculation-1)
-            - [**3. Result**](#3-result)
-        - [***Part #2***](#part-2-1)
-            - [**1. Calculation**](#1-calculation)
-            - [**2. Result**](#2-result)
-        - [***Part #3***](#part-3-1)
-            - [**1. Code**](#1-code-1)
-            - [**2. Performance**](#2-performance)
-        - [***Part #4***](#part-4)
-            - [**1. Code**](#1-code-2)
-            - [**2. Performance**](#2-performance-1)
-    - [**III. Bonus**](#iii-bonus)
-        - [***Part #1***](#part-1-2)
-            - [**1. Code**](#1-code-3)
-            - [**2. Performance**](#2-performance-2)
-        - [***Part #2***](#part-2-2)
-            - [**1. Code**](#1-code-4)
-            - [**2. Performance**](#2-performance-3)
+  - [**I. Register Reuse**](#i-register-reuse)
+    - [***Part #1***](#part-1)
+      - [**1. Symbols**](#1-symbols)
+      - [**2. Calculation**](#2-calculation)
+      - [**3. Performance**](#3-performance)
+        - [**Calculations**](#calculations)
+      - [**4.Results**](#4results)
+    - [***Part #2***](#part-2)
+      - [**1. Code**](#1-code)
+      - [**2. Calculations**](#2-calculations)
+      - [**3. Performance**](#3-performance-1)
+    - [***Part #3***](#part-3)
+      - [**1. Analysis**](#1-analysis)
+      - [**2. Code**](#2-code)
+      - [**3. Calculations**](#3-calculations)
+      - [**4. Performance**](#4-performance)
+  - [**II. Cache Reuse**](#ii-cache-reuse)
+    - [***Part #1***](#part-1-1)
+      - [**1. Symbols**](#1-symbols-1)
+      - [**2. Calculation**](#2-calculation-1)
+      - [**3. Result**](#3-result)
+    - [***Part #2***](#part-2-1)
+      - [**1. Calculation**](#1-calculation)
+      - [**2. Result**](#2-result)
+    - [***Part #3***](#part-3-1)
+      - [**1. Code**](#1-code-1)
+      - [**2. Performance**](#2-performance)
+    - [***Part #4***](#part-4)
+      - [**1. Code**](#1-code-2)
+      - [**2. Performance**](#2-performance-1)
+  - [**III. Bonus**](#iii-bonus)
+    - [***Part #1***](#part-1-2)
+      - [**1. Code**](#1-code-3)
+      - [**2. Performance**](#2-performance-2)
+    - [***Part #2***](#part-2-2)
+      - [**1. Code**](#1-code-4)
+      - [**2. Performance**](#2-performance-3)
 <center> 
 
 # **CS211 Project1**
@@ -589,13 +589,13 @@ n\Type|ijk|jik|ikj|kij|jki|kji
 void mmm(double *a, double *b, double *c, int n) {
     int i, j, k;
     for (i = 0; i < n; i+=B)
-	for (j = 0; j < n; j+=B)
+	    for (j = 0; j < n; j+=B)
             for (k = 0; k < n; k+=B)
 		    /* B x B mini matrix multiplications */
                 for (i1 = i; i1 < i+B; i1++)
                     for (j1 = j; j1 < j+B; j1++)
                         for (k1 = k; k1 < k+B; k1++)
-	                    c[i1*n+j1] += a[i1*n + k1]*b[k1*n + j1];
+	                        c[i1*n+j1] += a[i1*n + k1]*b[k1*n + j1];
 ```
 Because $n=10000$, $BS=10$, $L=10$ and $CS=600$: $CS>3*BS^2$, all the blocks can be stored in the cache. 
 
@@ -611,7 +611,7 @@ $$ blockCM_A = blockCM_B = n/BS*(BS)^2/L = n$$
 $$ blockCM_C = (BS)^2/L = BS $$ 
 $$ blockCM = 2*n*(n/BS)^2 + BS*(n/BS)^2 = 2/BS^2*n^3 + 1/BS*n^2 $$
 
-Same as part I, $CR = 2n^3+n^2$
+Same as part I, $CR = 2n^3+n^3/BS$
 
 Other algorithms are the similar.
 
@@ -621,9 +621,8 @@ Other algorithms are the similar.
 matrix\Type|ijk|jik|ikj|kij|jki|kji
 -|-|-|-|-|-|-
 $A[i][k]$|`k%10==0?n/BS:0`|`k%10==0?n/BS:0`|`j%10==0?1:0`|`j%10==0?1:0`|`i%10==0?n/BS:0`|`i%10==0?n/BS:0`
-$B[k][j]$|`k%10==0?n/BS:0`|`k%10==0?n/BS:0`|`j%10==0?n/BS:0`|`j%10==0?n/BS:0`|`i%10==0?n/BS:0`|`i%10==0?n/BS:0`
-$C[i][j]$|`k%10==0?1:0`|`k%10==0?1:0`|`j%10==0?n/BS:0`|`j%10==0?n/BS:0`|`i%10==0?1:0`|`i%10==0?1:0`
-
+$B[k][j]$|`k%10==0?n/BS:0`|`k%10==0?n/BS:0`|`j%10==0?n/BS:0`|`j%10==0?n/BS:0`|`i%10==0?1:0`|`i%10==0?1:0`
+$C[i][j]$|`k%10==0?1:0`|`k%10==0?1:0`|`j%10==0?n/BS:0`|`j%10==0?n/BS:0`|`i%10==0?n/BS:0`|`i%10==0?n/BS:0`
 *Cache miss* 
 n\Type|ijk|jik|ikj|kij|jki|kji
 -|-|-|-|-|-|-

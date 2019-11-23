@@ -18,3 +18,48 @@ Elapsed time, block LU: 54.794360 seconds
 Elapsed time, MKL LAPACK: 6.638058 seconds
 Elapsed time, naive LU: 469.614821 seconds
 Elapsed time, block LU: 103.458482 seconds
+
+
+Host 'bolt.cs.ucr.edu' resolved to 169.235.30.120.
+ n = 1002
+Elapsed time, MKL LAPACK: 0.113705 seconds
+Elapsed time, naive LU: 3.668702 seconds
+Elapsed time, block LU: 1.296701 seconds
+ n = 2001
+Elapsed time, MKL LAPACK: 0.542163 seconds
+Elapsed time, naive LU: 30.744550 seconds
+Elapsed time, block LU: 7.758978 seconds
+ n = 3000
+Elapsed time, MKL LAPACK: 1.628754 seconds
+Elapsed time, naive LU: 100.671873 seconds
+Elapsed time, block LU: 23.866773 seconds
+ n = 4002
+Elapsed time, MKL LAPACK: 3.525585 seconds
+Elapsed time, naive LU: 238.748902 seconds
+Elapsed time, block LU: 54.794360 seconds
+ n = 5001
+Elapsed time, MKL LAPACK: 6.638058 seconds
+Elapsed time, naive LU: 469.614821 seconds
+Elapsed time, block LU: 103.458482 seconds
+
+
+ n = 1002
+Elapsed time, MKL LAPACK: 0.148049 seconds
+Elapsed time, naive LU: 3.762635 seconds
+Elapsed time, block LU: 1.510022 seconds
+ n = 2001
+Elapsed time, MKL LAPACK: 0.572735 seconds
+Elapsed time, naive LU: 30.229238 seconds
+Elapsed time, block LU: 10.156972 seconds
+ n = 3000
+Elapsed time, MKL LAPACK: 1.735190 seconds
+Elapsed time, naive LU: 104.493806 seconds
+Elapsed time, block LU: 32.807879 seconds
+ n = 4002
+Elapsed time, MKL LAPACK: 3.778885 seconds
+Elapsed time, naive LU: 242.035430 seconds
+Elapsed time, block LU: 74.948826 seconds
+ n = 5001
+Elapsed time, MKL LAPACK: 7.151238 seconds
+Elapsed time, naive LU: 486.754238 seconds
+Elapsed time, block LU: 142.978749 seconds

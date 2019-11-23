@@ -87,7 +87,7 @@ int main (int argc, char *argv[])
    marked = (char *) malloc(size); 
    local_prime_marked = (char *) malloc(local_prime_size); 
 
-   if (makred == NULL || local_prime_marked == NULL) {
+   if (marked == NULL || local_prime_marked == NULL) {
       printf("Cannot allocate enough memory to processor - %d.\n", id); 
       MPI_Finalize();
       exit(1); 

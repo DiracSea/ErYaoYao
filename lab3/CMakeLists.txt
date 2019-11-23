@@ -11,9 +11,9 @@ add_executable(sieve0 sieve0.c)
 add_executable(sieve1 sieve1.c)
 add_executable(sieve2 sieve2.c)
 add_executable(sieve3 sieve3.c)
-add_executable(sieve3 sieve4.c)
-add_executable(sieve3 sieve5.c)
-add_executable(sieve3 sieve6.c)
+add_executable(sieve4 sieve4.c)
+add_executable(sieve5 sieve5.c)
+add_executable(sieve6 sieve6.c)
 
 set(TARGET_LIST "sieve0 sieve1 sieve2 sieve3 sieve4 sieve5 sieve6")
 

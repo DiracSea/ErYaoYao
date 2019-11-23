@@ -50,11 +50,11 @@ int main (int argc, char *argv[])
 
    // odd list
    // if even, removing it; if odd, keeping it
-   low_value += (low_value)&1; // -> 
-   high_value -= (high_value)&1; // <- 
+   low_value += (low_value + 1)&1; // -> 
+   high_value -= (high_value + 1)&1; // <- 
 
    // size is odd number
-   size = (high_value - low_value)>>1 + 1;
+   size = (high_value - low_value)/2 + 1;
 
    /* Bail out if all the primes used for sieving are
       not all held by process 0 */
@@ -96,7 +96,7 @@ int main (int argc, char *argv[])
          // 1 [p*((low%p)&1+1) - low%p]>>1
          // [p - low%p + (low/p+1)&1*p]>>1
          // 2 [p*((low/p+1)&1+1) - low%p]>>1
-         else first = (prime * ((low_value%prime + 1)&1 + 1) - low_value%prime) >> 1; // cannot be divided 
+         else first = (prime * ((low_value%prime + 1)&1 + 1) - low_value%prime)/2; // cannot be divided 
       }
       // mark all that prime list
       for (i = first; i < size; i += prime) marked[i] = 1;

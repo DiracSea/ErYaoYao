@@ -124,7 +124,7 @@ int main (int argc, char *argv[])
    // 2: 8192K
    // cache_alignment 64B
    // long long 8B
-   block_size = 5000; 
+   block_size = 1200000; 
    block_low_value = low_value; 
    block_high_value = block_low_value + 2*(block_size - 1); 
 

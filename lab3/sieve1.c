@@ -93,7 +93,7 @@ int main (int argc, char *argv[])
          // low%p -> r => p - r -> offset
          // [(p - low%p) + (p - low%p)%2*p]/2
          // (p - low%p) and p is odd -> low%p is even; low is odd, odd/odd is oddd
-         // [(p - low%p) + p*(low%p)%2] >> 1
+         // [(p - low%p) + p*(low%p+1)%2] >> 1
          // 1 [p*((low%p+1)%2+1) - low%p]>>1
          // [p - low%p + (low/p+1)%2*p]>>1
          // 2 [p*((low/p)%2+1) - low%p]>>1
